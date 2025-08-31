@@ -2,15 +2,19 @@
 ---
 ## Biodata
 
-- *Nama:* Roni Firnanda
-- *NIM:* 230411100025
-- *Email:* ronifirnanda678@gmail.com
-- *Universitas:* Universitas Trunojoyo Madura  
-- *Fakultas:* Teknik  
-- *Program Studi:* Teknik Informatika  
-- *Kelas:* Proyek Sains Data B  
+- Nama        : Roni Firnanda
+- NIM         : 230411100025
+- Prodi       : Teknik Informatika
+- Universitas : Universitas Trunojoyo Madura (UTM)
 
 ---
 
 ## Tentang Saya
-Saya adalah mahasiswa Teknik Informatika Universitas Trunojoyo Madura dengan ketertarikan pada pengembangan teknologi, data science, dan pemrograman. Saat ini saya mengikuti kelas Proyek Sains Data B untuk memperdalam keterampilan analisis data dan pengembangan proyek berbasis data.
+Hai,perkenalkan nama saya Roni Firnanda.
+saya lahir di Sumenep pada tanggal 10 Oktober 2004.Untuk saat ini saya adalah mahasiswa semester 5 di Universitas Trunojoyo Madura (UTM).
+
+
+## Kontak saya
+
+- Email : ronifirnanda678@gmail.com
+- nomor : +62...
