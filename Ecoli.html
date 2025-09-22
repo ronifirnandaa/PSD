@@ -418,21 +418,24 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;ecoli.data&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;ecoli.data&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Isi tabel ecoli:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;ecoli.data&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Isi tabel ecoli:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Isi tabel ecoli:
 
-<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
+  AAT_ECOLI   0.49  0.29  0.48  0.50  0.56  0.24  0.35   cp
+0  ACEA_ECOLI  0.07  0.40  0.48  0.50  0.54  0.35...       
+1  ACEK_ECOLI  0.56  0.40  0.48  0.50  0.49  0.37...       
+2  ACKA_ECOLI  0.59  0.49  0.48  0.50  0.52  0.45...       
+3  ADI_ECOLI   0.23  0.32  0.48  0.50  0.55  0.25...       
+4  ALKH_ECOLI  0.67  0.39  0.48  0.50  0.36  0.38...       
 </pre></div>
 </div>
 </div>
@@ -476,7 +479,7 @@ imS      2
 Name: count, dtype: int64
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipython-input-3550560290.py:5: FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_26482/3550560290.py:5: FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
   df = pd.read_csv(&#39;ecoli.data&#39;, delim_whitespace=True, header=None, names=column_names)
 </pre></div>
 </div>
@@ -578,14 +581,14 @@ Name: count, dtype: int64
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:8: SyntaxWarning: invalid escape sequence &#39;\s&#39;
 &lt;&gt;:8: SyntaxWarning: invalid escape sequence &#39;\s&#39;
-/tmp/ipython-input-2229756600.py:8: SyntaxWarning: invalid escape sequence &#39;\s&#39;
+/tmp/ipykernel_26482/2229756600.py:8: SyntaxWarning: invalid escape sequence &#39;\s&#39;
   df = pd.read_csv(&quot;ecoli.data&quot;, sep=&quot;\s+&quot;, header=None)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Explained variance ratio (first two components): [0.5161681 0.2442034]
 </pre></div>
 </div>
-<img alt="_images/43fc1ab4eb4007c85fcd66b97afc352bb117290a7e3a68b0a4c16192741fd1ea.png" src="_images/43fc1ab4eb4007c85fcd66b97afc352bb117290a7e3a68b0a4c16192741fd1ea.png" />
+<img alt="_images/4a9c4a0e488e5e0a745aa6fc2035d052770f2b9428ca7748d85a213b249b8146.png" src="_images/4a9c4a0e488e5e0a745aa6fc2035d052770f2b9428ca7748d85a213b249b8146.png" />
 </div>
 </div>
 </section>
@@ -598,13 +601,33 @@ Name: count, dtype: int64
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>imbalanced-learn
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: imbalanced-learn in /home/codespace/.python/current/lib/python3.12/site-packages (0.14.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy&lt;3,&gt;=1.25.2 in /home/codespace/.python/current/lib/python3.12/site-packages (from imbalanced-learn) (2.2.6)
+Requirement already satisfied: scipy&lt;2,&gt;=1.11.4 in /home/codespace/.local/lib/python3.12/site-packages (from imbalanced-learn) (1.16.0)
+Requirement already satisfied: scikit-learn&lt;2,&gt;=1.4.2 in /home/codespace/.local/lib/python3.12/site-packages (from imbalanced-learn) (1.7.0)
+Requirement already satisfied: joblib&lt;2,&gt;=1.2.0 in /home/codespace/.local/lib/python3.12/site-packages (from imbalanced-learn) (1.5.1)
+Requirement already satisfied: threadpoolctl&lt;4,&gt;=2.0.0 in /home/codespace/.local/lib/python3.12/site-packages (from imbalanced-learn) (3.6.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADASYN</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;ecoli.data&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;ecoli.data&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 
 <span class="c1"># Ambil fitur (kolom 1–7) dan target (kolom 8)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span>
@@ -618,13 +641,13 @@ Name: count, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:8: SyntaxWarning: invalid escape sequence &#39;\s&#39;
-&lt;&gt;:8: SyntaxWarning: invalid escape sequence &#39;\s&#39;
-/tmp/ipython-input-2817734371.py:8: SyntaxWarning: invalid escape sequence &#39;\s&#39;
-  df = pd.read_csv(&quot;ecoli.data&quot;, sep=&quot;\s+&quot;, header=None)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribusi kelas sebelum ADASYN:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            0     1     2     3    4     5     6     7   8
+0   AAT_ECOLI  0.49  0.29  0.48  0.5  0.56  0.24  0.35  cp
+1  ACEA_ECOLI  0.07  0.40  0.48  0.5  0.54  0.35  0.44  cp
+2  ACEK_ECOLI  0.56  0.40  0.48  0.5  0.49  0.37  0.46  cp
+3  ACKA_ECOLI  0.59  0.49  0.48  0.5  0.52  0.45  0.36  cp
+4   ADI_ECOLI  0.23  0.32  0.48  0.5  0.55  0.25  0.35  cp
+Distribusi kelas sebelum ADASYN:
 Counter({&#39;cp&#39;: 143, &#39;im&#39;: 77, &#39;pp&#39;: 52, &#39;imU&#39;: 35, &#39;om&#39;: 20, &#39;omL&#39;: 5, &#39;imS&#39;: 2, &#39;imL&#39;: 2})
 Total sampel sebelum ADASYN: 336
 Jumlah fitur: 7
@@ -673,53 +696,70 @@ Jumlah fitur: 7
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\s&#39;
 &lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\s&#39;
-/tmp/ipython-input-929993729.py:6: SyntaxWarning: invalid escape sequence &#39;\s&#39;
+/tmp/ipykernel_26482/929993729.py:6: SyntaxWarning: invalid escape sequence &#39;\s&#39;
+  df = pd.read_csv(&quot;ecoli.data&quot;, sep=&quot;\s+&quot;, header=None)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_26482/929993729.py:6: SyntaxWarning: invalid escape sequence &#39;\s&#39;
   df = pd.read_csv(&quot;ecoli.data&quot;, sep=&quot;\s+&quot;, header=None)
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">/tmp/ipython-input-929993729.py</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> 
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">16</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">adasyn</span> <span class="o">=</span> <span class="n">ADASYN</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="c1"># Terapkan ADASYN pada data</span>
 <span class="ne">---&gt; </span><span class="mi">16</span> <span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">adasyn</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> 
 <span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribusi kelas setelah ADASYN:&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="nb">print</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y_resampled</span><span class="p">))</span>
 
-<span class="nn">/usr/local/lib/python3.12/dist-packages/imblearn/base.py</span> in <span class="ni">fit_resample</span><span class="nt">(self, X, y, **params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">200</span>             <span class="n">The</span> <span class="n">corresponding</span> <span class="n">label</span> <span class="n">of</span> <span class="err">`</span><span class="n">X_resampled</span><span class="err">`</span><span class="o">.</span>
-<span class="g g-Whitespace">    </span><span class="mi">201</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">202</span><span class="s2">         return super().fit_resample(X, y, **params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">203</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">204</span><span class="s2">     def _more_tags(self):</span>
+<span class="nn">File ~/.python/current/lib/python3.12/site-packages/imblearn/base.py:202,</span> in <span class="ni">BaseSampler.fit_resample</span><span class="nt">(self, X, y, **params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="k">def</span><span class="w"> </span><span class="nf">fit_resample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Resample the dataset.</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">184</span><span class="sd">     Parameters</span>
+<span class="sd">   (...)    200         The corresponding label of `X_resampled`.</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">202</span>     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 
-<span class="nn">/usr/local/lib/python3.12/dist-packages/sklearn/base.py</span> in <span class="ni">wrapper</span><span class="nt">(estimator, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1387</span><span class="s2">                 )</span>
-<span class="g g-Whitespace">   </span><span class="mi">1388</span><span class="s2">             ):</span>
-<span class="ne">-&gt; </span><span class="mi">1389</span><span class="s2">                 return fit_method(estimator, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1390</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1391</span><span class="s2">         return wrapper</span>
+<span class="nn">File ~/.local/lib/python3.12/site-packages/sklearn/base.py:1363,</span> in <span class="ni">_fit_context.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(estimator, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1356</span>     <span class="n">estimator</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1358</span> <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1359</span>     <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1360</span>         <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
+<span class="g g-Whitespace">   </span><span class="mi">1361</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1362</span> <span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1363</span>     <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">/usr/local/lib/python3.12/dist-packages/imblearn/base.py</span> in <span class="ni">fit_resample</span><span class="nt">(self, X, y, **params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">103</span><span class="s2">         )</span>
-<span class="g g-Whitespace">    </span><span class="mi">104</span><span class="s2"> </span>
-<span class="ne">--&gt; </span><span class="mi">105</span><span class="s2">         output = self._fit_resample(X, y, **params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">106</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">107</span><span class="s2">         y_ = (</span>
+<span class="nn">File ~/.python/current/lib/python3.12/site-packages/imblearn/base.py:105,</span> in <span class="ni">SamplerMixin.fit_resample</span><span class="nt">(self, X, y, **params)</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">binarize_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_X_y</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_strategy_</span> <span class="o">=</span> <span class="n">check_sampling_strategy</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span>     <span class="bp">self</span><span class="o">.</span><span class="n">sampling_strategy</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_type</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">105</span> <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="n">y_</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span>     <span class="n">label_binarize</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">classes</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="k">if</span> <span class="n">binarize_y</span> <span class="k">else</span> <span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">109</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span> <span class="n">X_</span><span class="p">,</span> <span class="n">y_</span> <span class="o">=</span> <span class="n">arrays_transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_</span><span class="p">)</span>
 
-<span class="nn">/usr/local/lib/python3.12/dist-packages/imblearn/over_sampling/_adasyn.py</span> in <span class="ni">_fit_resample</span><span class="nt">(self, X, y)</span>
-<span class="g g-Whitespace">    </span><span class="mi">178</span><span class="s2">             # to find the class NN to generate new samples</span>
-<span class="g g-Whitespace">    </span><span class="mi">179</span><span class="s2">             self.nn_.fit(X_class)</span>
-<span class="ne">--&gt; </span><span class="mi">180</span><span class="s2">             nns = self.nn_.kneighbors(X_class, return_distance=False)[:, 1:]</span>
-<span class="g g-Whitespace">    </span><span class="mi">181</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">182</span><span class="s2">             enumerated_class_indices = np.arange(len(target_class_indices))</span>
+<span class="nn">File ~/.python/current/lib/python3.12/site-packages/imblearn/over_sampling/_adasyn.py:180,</span> in <span class="ni">ADASYN._fit_resample</span><span class="nt">(self, X, y)</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span> <span class="c1"># the nearest neighbors need to be fitted only on the current class</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span> <span class="c1"># to find the class NN to generate new samples</span>
+<span class="g g-Whitespace">    </span><span class="mi">179</span> <span class="bp">self</span><span class="o">.</span><span class="n">nn_</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_class</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">180</span> <span class="n">nns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nn_</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">X_class</span><span class="p">,</span> <span class="n">return_distance</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">:]</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="n">enumerated_class_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">target_class_indices</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">enumerated_class_indices</span><span class="p">,</span> <span class="n">n_samples_generate</span><span class="p">)</span>
 
-<span class="nn">/usr/local/lib/python3.12/dist-packages/sklearn/neighbors/_base.py</span> in <span class="ni">kneighbors</span><span class="nt">(self, X, n_neighbors, return_distance)</span>
-<span class="g g-Whitespace">    </span><span class="mi">852</span><span class="s2">             else:</span>
-<span class="g g-Whitespace">    </span><span class="mi">853</span><span class="s2">                 inequality_str = &quot;n_neighbors &lt;= n_samples_fit&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">854</span><span class="s2">             raise ValueError(</span>
-<span class="g g-Whitespace">    </span><span class="mi">855</span><span class="s2">                 f&quot;Expected </span><span class="si">{inequality_str}</span><span class="s2">, but &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">856</span><span class="s2">                 f&quot;n_neighbors = </span><span class="si">{n_neighbors}</span><span class="s2">, n_samples_fit = </span><span class="si">{n_samples_fit}</span><span class="s2">, &quot;</span>
+<span class="nn">File ~/.local/lib/python3.12/site-packages/sklearn/neighbors/_base.py:854,</span> in <span class="ni">KNeighborsMixin.kneighbors</span><span class="nt">(self, X, n_neighbors, return_distance)</span>
+<span class="g g-Whitespace">    </span><span class="mi">852</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">853</span>         <span class="n">inequality_str</span> <span class="o">=</span> <span class="s2">&quot;n_neighbors &lt;= n_samples_fit&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">854</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">855</span>         <span class="sa">f</span><span class="s2">&quot;Expected </span><span class="si">{</span><span class="n">inequality_str</span><span class="si">}</span><span class="s2">, but &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">856</span>         <span class="sa">f</span><span class="s2">&quot;n_neighbors = </span><span class="si">{</span><span class="n">n_neighbors</span><span class="si">}</span><span class="s2">, n_samples_fit = </span><span class="si">{</span><span class="n">n_samples_fit</span><span class="si">}</span><span class="s2">, &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">857</span>         <span class="sa">f</span><span class="s2">&quot;n_samples = </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># include n_samples for common tests</span>
+<span class="g g-Whitespace">    </span><span class="mi">858</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">860</span> <span class="n">n_jobs</span> <span class="o">=</span> <span class="n">effective_n_jobs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">861</span> <span class="n">chunked_results</span> <span class="o">=</span> <span class="kc">None</span>
 
 <span class="ne">ValueError</span>: Expected n_neighbors &lt;= n_samples_fit, but n_neighbors = 3, n_samples_fit = 2, n_samples = 2
 </pre></div>
@@ -817,7 +857,7 @@ Setelah ADASYN: Counter({&#39;cp&#39;: 143, &#39;im&#39;: 143, &#39;imS&#39;: 14
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ffa69c230f2e2d5c36322fc1b244e605fa6c251c77bd26d4632836865f4e17fa.png" src="_images/ffa69c230f2e2d5c36322fc1b244e605fa6c251c77bd26d4632836865f4e17fa.png" />
+<img alt="_images/20bb3e2018c2903c2edf0f52cd5c8b6bd948219bb6a599a947d2c84222efee06.png" src="_images/20bb3e2018c2903c2edf0f52cd5c8b6bd948219bb6a599a947d2c84222efee06.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tabel Perbandingan:
   Kelas  Sebelum ROS+ADASYN  Sesudah ROS+ADASYN  Sampel Sintetis Ditambahkan
 0    cp                 143                 143                            0
@@ -911,7 +951,7 @@ Setelah ADASYN: Counter({&#39;cp&#39;: 143, &#39;im&#39;: 143, &#39;imS&#39;: 14
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VISUALISASI PCA DATA SETELAH ADASYN
 </pre></div>
 </div>
-<img alt="_images/c9495e772e08f00e637f20b71e2b6979aba53928ba7ea1db9ec0004159b11248.png" src="_images/c9495e772e08f00e637f20b71e2b6979aba53928ba7ea1db9ec0004159b11248.png" />
+<img alt="_images/c6aee946e0c8a8bc22bdfa0358d58aac14a4a484987bb628ed066fe6460862bc.png" src="_images/c6aee946e0c8a8bc22bdfa0358d58aac14a4a484987bb628ed066fe6460862bc.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RINGKASAN HASIL ADASYN
 • Data asli: 336 sampel dengan ketidakseimbangan kelas
 • Data setelah ADASYN: 1144 sampel dengan kelas yang lebih seimbang
