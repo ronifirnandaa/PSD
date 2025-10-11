@@ -1,0 +1,7 @@
+.logo__image, .profil-image {
+   width: 120px;          /* pastikan kotak */
+  height: 120px;
+  border-radius: 50%;    /* bikin bulat */
+  object-fit: cover;     /* biar tidak gepeng */
+  display: block;        /* opsi: hilangkan celah inline */
+}
