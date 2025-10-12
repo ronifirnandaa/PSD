@@ -17,4 +17,4 @@ saya lahir di Sumenep pada tanggal 10 Oktober 2004.Untuk saat ini saya adalah ma
 ## Kontak saya
 
 - Email : ronifirnanda678@gmail.com
-- nomor : +62...
+- nomor : +62..
