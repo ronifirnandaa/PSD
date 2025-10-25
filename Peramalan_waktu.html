@@ -425,118 +425,24 @@ Notebook ini dibuat untuk memprediksi kualitas udara harian dengan menggunakan k
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting openeo
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading openeo-0.45.0-py3-none-any.whl.metadata (8.2 kB)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: openeo in /usr/local/python/3.12.1/lib/python3.12/site-packages (0.45.0)
 Requirement already satisfied: requests&gt;=2.26.0 in /home/codespace/.local/lib/python3.12/site-packages (from openeo) (2.32.4)
 Requirement already satisfied: urllib3&gt;=1.9.0 in /home/codespace/.local/lib/python3.12/site-packages (from openeo) (2.5.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting shapely&gt;=1.6.4 (from openeo)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading shapely-2.1.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.8 kB)
+Requirement already satisfied: shapely&gt;=1.6.4 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from openeo) (2.1.2)
 Requirement already satisfied: numpy&gt;=1.17.0 in /home/codespace/.local/lib/python3.12/site-packages (from openeo) (2.3.1)
-Collecting xarray&lt;2025.01.2,&gt;=0.12.3 (from openeo)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading xarray-2025.1.1-py3-none-any.whl.metadata (11 kB)
+Requirement already satisfied: xarray&lt;2025.01.2,&gt;=0.12.3 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from openeo) (2025.1.1)
 Requirement already satisfied: pandas&gt;0.20.0 in /home/codespace/.local/lib/python3.12/site-packages (from openeo) (2.3.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting pystac&gt;=1.5.0 (from openeo)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading pystac-1.14.1-py3-none-any.whl.metadata (4.7 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting deprecated&gt;=1.2.12 (from openeo)
-  Downloading Deprecated-1.2.18-py2.py3-none-any.whl.metadata (5.7 kB)
+Requirement already satisfied: pystac&gt;=1.5.0 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from openeo) (1.14.1)
+Requirement already satisfied: deprecated&gt;=1.2.12 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from openeo) (1.2.18)
 Requirement already satisfied: packaging&gt;=23.2 in /home/codespace/.local/lib/python3.12/site-packages (from xarray&lt;2025.01.2,&gt;=0.12.3-&gt;openeo) (25.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting wrapt&lt;2,&gt;=1.10 (from deprecated&gt;=1.2.12-&gt;openeo)
-  Downloading wrapt-1.17.3-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.4 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: python-dateutil&gt;=2.8.2 in /home/codespace/.local/lib/python3.12/site-packages (from pandas&gt;0.20.0-&gt;openeo) (2.9.0.post0)
+Requirement already satisfied: wrapt&lt;2,&gt;=1.10 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from deprecated&gt;=1.2.12-&gt;openeo) (1.17.3)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /home/codespace/.local/lib/python3.12/site-packages (from pandas&gt;0.20.0-&gt;openeo) (2.9.0.post0)
 Requirement already satisfied: pytz&gt;=2020.1 in /home/codespace/.local/lib/python3.12/site-packages (from pandas&gt;0.20.0-&gt;openeo) (2025.2)
 Requirement already satisfied: tzdata&gt;=2022.7 in /home/codespace/.local/lib/python3.12/site-packages (from pandas&gt;0.20.0-&gt;openeo) (2025.2)
 Requirement already satisfied: six&gt;=1.5 in /home/codespace/.local/lib/python3.12/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;0.20.0-&gt;openeo) (1.17.0)
 Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in /home/codespace/.local/lib/python3.12/site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.4.2)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/codespace/.local/lib/python3.12/site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.10)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /home/codespace/.local/lib/python3.12/site-packages (from requests&gt;=2.26.0-&gt;openeo) (2025.7.9)
-Downloading openeo-0.45.0-py3-none-any.whl (335 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading xarray-2025.1.1-py3-none-any.whl (1.2 MB)
-?25l   <span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">0.0/1.2 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   <span class=" -Color -Color-Red">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">1.2/1.2 MB</span> <span class=" -Color -Color-Red">38.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading Deprecated-1.2.18-py2.py3-none-any.whl (10.0 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading wrapt-1.17.3-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (88 kB)
-Downloading pystac-1.14.1-py3-none-any.whl (207 kB)
-Downloading shapely-2.1.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (3.1 MB)
-?25l   <span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">0.0/3.1 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   <span class=" -Color -Color-Red">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">3.1/3.1 MB</span> <span class=" -Color -Color-Red">45.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: wrapt, shapely, pystac, deprecated, xarray, openeo
-?25l
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">1/6</span> [shapely]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">1/6</span> [shapely]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">2/6</span> [pystac]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4/6</span> [xarray]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4/6</span> [xarray]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4/6</span> [xarray]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4/6</span> [xarray]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4/6</span> [xarray]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4/6</span> [xarray]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4/6</span> [xarray]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4/6</span> [xarray]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━</span> <span class=" -Color -Color-Green">5/6</span> [openeo]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━</span> <span class=" -Color -Color-Green">5/6</span> [openeo]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   <span class=" -Color -Color-Red">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">6/6</span> [openeo]
-?25h
-Successfully installed deprecated-1.2.18 openeo-0.45.0 pystac-1.14.1 shapely-2.1.2 wrapt-1.17.3 xarray-2025.1.1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip is available: <span class=" -Color -Color-Red">25.1.1</span> -&gt; <span class=" -Color -Color-Green">25.3</span>
@@ -560,7 +466,7 @@ Successfully installed deprecated-1.2.18 openeo-0.45.0 pystac-1.14.1 shapely-2.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">Visit <a href="https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=QNEB-DLRY" title="Authenticate at https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=QNEB-DLRY" target="_blank" rel="noopener noreferrer">https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=QNEB-DLRY</a> <a href="#" onclick="navigator.clipboard.writeText('https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=QNEB-DLRY');return false;" title="Copy authentication URL to clipboard">&#128203;</a> to authenticate.</div><div class="output text_html"><code>[##################################---]</code> ⌛ Polling</div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<div class="output text_html">Visit <a href="https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=PTAM-TCVK" title="Authenticate at https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=PTAM-TCVK" target="_blank" rel="noopener noreferrer">https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=PTAM-TCVK</a> <a href="#" onclick="navigator.clipboard.writeText('https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=PTAM-TCVK');return false;" title="Copy authentication URL to clipboard">&#128203;</a> to authenticate.</div><div class="output text_html"><code>[##################################---]</code> ⌛ Authorization pending</div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">connection</span> <span class="o">=</span> <span class="n">openeo</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;openeo.dataspace.copernicus.eu&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">authenticate_oidc</span><span class="p">()</span>
@@ -591,133 +497,14 @@ Successfully installed deprecated-1.2.18 openeo-0.45.0 pystac-1.14.1 shapely-2.1
 <span class="nn">    352     _log.info(&quot;Obtained tokens: {t}&quot;.format(t=[k for k, v</span> in <span class="ni">tokens._asdict().items</span><span class="nt">() if v]))</span>
 <span class="g g-Whitespace">    </span><span class="mi">353</span>     <span class="k">if</span> <span class="n">store_refresh_token</span><span class="p">:</span>
 
-<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/openeo/rest/auth/oidc.py:922,</span> in <span class="ni">OidcDeviceAuthenticator.get_tokens</span><span class="nt">(self, request_refresh_token)</span>
-<span class="g g-Whitespace">    </span><span class="mi">920</span> <span class="n">poll_ui</span><span class="o">.</span><span class="n">show_progress</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">&quot;Polling&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">921</span> <span class="c1"># TODO: skip occasional failing requests? (e.g. see `SkipIntermittentFailures` from openeo-aggregator)</span>
-<span class="ne">--&gt; </span><span class="mi">922</span> <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">token_endpoint</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">post_data</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">923</span> <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">924</span>     <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">elapsed</span><span class="p">()</span><span class="si">:</span><span class="s2">5.1f</span><span class="si">}</span><span class="s2">s] Authorized successfully.&quot;</span><span class="p">)</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/requests/sessions.py:637,</span> in <span class="ni">Session.post</span><span class="nt">(self, url, data, json, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">626</span> <span class="k">def</span><span class="w"> </span><span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">627</span><span class="w">     </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sends a POST request. Returns :class:`Response` object.</span>
-<span class="g g-Whitespace">    </span><span class="mi">628</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">629</span><span class="sd">     :param url: URL for the new :class:`Request` object.</span>
-<span class="sd">   (...)    634     :rtype: requests.Response</span>
-<span class="g g-Whitespace">    </span><span class="mi">635</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">637</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/requests/sessions.py:589,</span> in <span class="ni">Session.request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
-<span class="g g-Whitespace">    </span><span class="mi">584</span> <span class="n">send_kwargs</span> <span class="o">=</span> <span class="p">{</span>
-<span class="g g-Whitespace">    </span><span class="mi">585</span>     <span class="s2">&quot;timeout&quot;</span><span class="p">:</span> <span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">586</span>     <span class="s2">&quot;allow_redirects&quot;</span><span class="p">:</span> <span class="n">allow_redirects</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">587</span> <span class="p">}</span>
-<span class="g g-Whitespace">    </span><span class="mi">588</span> <span class="n">send_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">589</span> <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prep</span><span class="p">,</span> <span class="o">**</span><span class="n">send_kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">591</span> <span class="k">return</span> <span class="n">resp</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/requests/sessions.py:703,</span> in <span class="ni">Session.send</span><span class="nt">(self, request, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">700</span> <span class="n">start</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">702</span> <span class="c1"># Send the request</span>
-<span class="ne">--&gt; </span><span class="mi">703</span> <span class="n">r</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">705</span> <span class="c1"># Total elapsed time of the request (approximately)</span>
-<span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="n">elapsed</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/requests/adapters.py:667,</span> in <span class="ni">HTTPAdapter.send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
-<span class="g g-Whitespace">    </span><span class="mi">664</span>     <span class="n">timeout</span> <span class="o">=</span> <span class="n">TimeoutSauce</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">read</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">666</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">667</span>     <span class="n">resp</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">668</span>         <span class="n">method</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">669</span>         <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">670</span>         <span class="n">body</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">671</span>         <span class="n">headers</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">672</span>         <span class="n">redirect</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">673</span>         <span class="n">assert_same_host</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">674</span>         <span class="n">preload_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">675</span>         <span class="n">decode_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">676</span>         <span class="n">retries</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">677</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">678</span>         <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">679</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">681</span> <span class="k">except</span> <span class="p">(</span><span class="n">ProtocolError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">682</span>     <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/urllib3/connectionpool.py:787,</span> in <span class="ni">HTTPConnectionPool.urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">784</span> <span class="n">response_conn</span> <span class="o">=</span> <span class="n">conn</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">release_conn</span> <span class="k">else</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">786</span> <span class="c1"># Make the request on the HTTPConnection object</span>
-<span class="ne">--&gt; </span><span class="mi">787</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_request</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">788</span>     <span class="n">conn</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">789</span>     <span class="n">method</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">790</span>     <span class="n">url</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">791</span>     <span class="n">timeout</span><span class="o">=</span><span class="n">timeout_obj</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">792</span>     <span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">793</span>     <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">794</span>     <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">795</span>     <span class="n">retries</span><span class="o">=</span><span class="n">retries</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">796</span>     <span class="n">response_conn</span><span class="o">=</span><span class="n">response_conn</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">797</span>     <span class="n">preload_content</span><span class="o">=</span><span class="n">preload_content</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">798</span>     <span class="n">decode_content</span><span class="o">=</span><span class="n">decode_content</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">799</span>     <span class="o">**</span><span class="n">response_kw</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">800</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">802</span> <span class="c1"># Everything went great!</span>
-<span class="g g-Whitespace">    </span><span class="mi">803</span> <span class="n">clean_exit</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/urllib3/connectionpool.py:534,</span> in <span class="ni">HTTPConnectionPool._make_request</span><span class="nt">(self, conn, method, url, body, headers, retries, timeout, chunked, response_conn, preload_content, decode_content, enforce_content_length)</span>
-<span class="g g-Whitespace">    </span><span class="mi">532</span> <span class="c1"># Receive the response from the server</span>
-<span class="g g-Whitespace">    </span><span class="mi">533</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">534</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">535</span> <span class="k">except</span> <span class="p">(</span><span class="n">BaseSSLError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">536</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_raise_timeout</span><span class="p">(</span><span class="n">err</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout_value</span><span class="o">=</span><span class="n">read_timeout</span><span class="p">)</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/urllib3/connection.py:565,</span> in <span class="ni">HTTPConnection.getresponse</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">562</span> <span class="n">_shutdown</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="p">,</span> <span class="s2">&quot;shutdown&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">564</span> <span class="c1"># Get the response from http.client.HTTPConnection</span>
-<span class="ne">--&gt; </span><span class="mi">565</span> <span class="n">httplib_response</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">567</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">568</span>     <span class="n">assert_header_parsing</span><span class="p">(</span><span class="n">httplib_response</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span>
-
-<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/http/client.py:1419,</span> in <span class="ni">HTTPConnection.getresponse</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1417</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1418</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1419</span>         <span class="n">response</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1420</span>     <span class="k">except</span> <span class="ne">ConnectionError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1421</span>         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/http/client.py:331,</span> in <span class="ni">HTTPResponse.begin</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">329</span> <span class="c1"># read until we get a non-100 response</span>
-<span class="g g-Whitespace">    </span><span class="mi">330</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">331</span>     <span class="n">version</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">reason</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_status</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">332</span>     <span class="k">if</span> <span class="n">status</span> <span class="o">!=</span> <span class="n">CONTINUE</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">333</span>         <span class="k">break</span>
-
-<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/http/client.py:292,</span> in <span class="ni">HTTPResponse._read_status</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">291</span> <span class="k">def</span><span class="w"> </span><span class="nf">_read_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">292</span>     <span class="n">line</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">readline</span><span class="p">(</span><span class="n">_MAXLINE</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;iso-8859-1&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">293</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">_MAXLINE</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">294</span>         <span class="k">raise</span> <span class="n">LineTooLong</span><span class="p">(</span><span class="s2">&quot;status line&quot;</span><span class="p">)</span>
-
-<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/socket.py:707,</span> in <span class="ni">SocketIO.readinto</span><span class="nt">(self, b)</span>
-<span class="g g-Whitespace">    </span><span class="mi">705</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">706</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">707</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sock</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">708</span>     <span class="k">except</span> <span class="n">timeout</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">709</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_timeout_occurred</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/ssl.py:1253,</span> in <span class="ni">SSLSocket.recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1249</span>     <span class="k">if</span> <span class="n">flags</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1250</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1251</span>           <span class="s2">&quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
-<span class="g g-Whitespace">   </span><span class="mi">1252</span>           <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1253</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nbytes</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1254</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1255</span>     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">nbytes</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
-
-<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/ssl.py:1105,</span> in <span class="ni">SSLSocket.read</span><span class="nt">(self, len, buffer)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1103</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1104</span>     <span class="k">if</span> <span class="n">buffer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1105</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1106</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1107</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/openeo/rest/auth/oidc.py:914,</span> in <span class="ni">OidcDeviceAuthenticator.get_tokens</span><span class="nt">(self, request_refresh_token)</span>
+<span class="g g-Whitespace">    </span><span class="mi">912</span> <span class="k">while</span> <span class="n">elapsed</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_poll_time</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">913</span>     <span class="n">poll_ui</span><span class="o">.</span><span class="n">show_progress</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">914</span>     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sleep</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">916</span>     <span class="k">if</span> <span class="n">elapsed</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">next_poll</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">917</span>         <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">918</span>             <span class="sa">f</span><span class="s2">&quot;Doing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">grant_type</span><span class="si">!r}</span><span class="s2"> token request </span><span class="si">{</span><span class="n">token_endpoint</span><span class="si">!r}</span><span class="s2"> with post data fields </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">post_data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">!r}</span><span class="s2"> (client_id </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">client_id</span><span class="si">!r}</span><span class="s2">)&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">919</span>         <span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
