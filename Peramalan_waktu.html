@@ -390,6 +390,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubah-data-menjadi-supervised"><strong>Ubah Data menjadi Supervised</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data"><strong>Normalisasi Data</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling"><strong>Modeling</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment">Deployment</a></li>
 </ul>
             </nav>
         </div>
@@ -434,13 +435,17 @@ Requirement already satisfied: xarray&lt;2025.01.2,&gt;=0.12.3 in /usr/local/pyt
 Requirement already satisfied: pandas&gt;0.20.0 in /home/codespace/.local/lib/python3.12/site-packages (from openeo) (2.3.1)
 Requirement already satisfied: pystac&gt;=1.5.0 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from openeo) (1.14.1)
 Requirement already satisfied: deprecated&gt;=1.2.12 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from openeo) (1.2.18)
-Requirement already satisfied: packaging&gt;=23.2 in /home/codespace/.local/lib/python3.12/site-packages (from xarray&lt;2025.01.2,&gt;=0.12.3-&gt;openeo) (25.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: packaging&gt;=23.2 in /home/codespace/.local/lib/python3.12/site-packages (from xarray&lt;2025.01.2,&gt;=0.12.3-&gt;openeo) (25.0)
 Requirement already satisfied: wrapt&lt;2,&gt;=1.10 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from deprecated&gt;=1.2.12-&gt;openeo) (1.17.3)
 Requirement already satisfied: python-dateutil&gt;=2.8.2 in /home/codespace/.local/lib/python3.12/site-packages (from pandas&gt;0.20.0-&gt;openeo) (2.9.0.post0)
 Requirement already satisfied: pytz&gt;=2020.1 in /home/codespace/.local/lib/python3.12/site-packages (from pandas&gt;0.20.0-&gt;openeo) (2025.2)
 Requirement already satisfied: tzdata&gt;=2022.7 in /home/codespace/.local/lib/python3.12/site-packages (from pandas&gt;0.20.0-&gt;openeo) (2025.2)
 Requirement already satisfied: six&gt;=1.5 in /home/codespace/.local/lib/python3.12/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;0.20.0-&gt;openeo) (1.17.0)
-Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in /home/codespace/.local/lib/python3.12/site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.4.2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in /home/codespace/.local/lib/python3.12/site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.4.2)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/codespace/.local/lib/python3.12/site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.10)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /home/codespace/.local/lib/python3.12/site-packages (from requests&gt;=2.26.0-&gt;openeo) (2025.7.9)
 </pre></div>
@@ -554,16 +559,13 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /home/codespace/.local/l
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-2510250807194d1a845eb47d52affa90&#39;: send &#39;start&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-2511022027104f80be2908f5b74e179d&#39;: send &#39;start&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:14 Job &#39;j-2510250807194d1a845eb47d52affa90&#39;: created (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:16 Job &#39;j-2511022027104f80be2908f5b74e179d&#39;: created (progress 0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:19 Job &#39;j-2510250807194d1a845eb47d52affa90&#39;: created (progress 0%)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:26 Job &#39;j-2510250807194d1a845eb47d52affa90&#39;: created (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:22 Job &#39;j-2511022027104f80be2908f5b74e179d&#39;: created (progress 0%)
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -590,13 +592,193 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /home/codespace/.local/l
 <span class="g g-Whitespace">    </span><span class="mi">397</span> <span class="k">if</span> <span class="n">outputfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">398</span>     <span class="n">job</span><span class="o">.</span><span class="n">download_result</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">outputfile</span><span class="p">)</span>
 
-<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/openeo/rest/job.py:371,</span> in <span class="ni">BatchJob.start_and_wait</span><span class="nt">(self, print, max_poll_interval, connection_retry_interval, soft_error_max, show_error_logs, require_success)</span>
-<span class="g g-Whitespace">    </span><span class="mi">368</span>         <span class="k">break</span>
-<span class="g g-Whitespace">    </span><span class="mi">370</span>     <span class="c1"># Sleep for next poll (and adaptively make polling less frequent)</span>
-<span class="ne">--&gt; </span><span class="mi">371</span>     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">poll_interval</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">372</span>     <span class="n">poll_interval</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">1.25</span> <span class="o">*</span> <span class="n">poll_interval</span><span class="p">,</span> <span class="n">max_poll_interval</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">374</span> <span class="k">if</span> <span class="n">require_success</span> <span class="ow">and</span> <span class="n">status</span> <span class="o">!=</span> <span class="s2">&quot;finished&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">375</span>     <span class="c1"># TODO: render logs jupyter-aware in a notebook context?</span>
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/openeo/rest/job.py:346,</span> in <span class="ni">BatchJob.start_and_wait</span><span class="nt">(self, print, max_poll_interval, connection_retry_interval, soft_error_max, show_error_logs, require_success)</span>
+<span class="g g-Whitespace">    </span><span class="mi">343</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">344</span>     <span class="c1"># TODO: also allow a hard time limit on this infinite poll loop?</span>
+<span class="g g-Whitespace">    </span><span class="mi">345</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">346</span>         <span class="n">job_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">347</span>     <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">ConnectionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">348</span>         <span class="n">soft_error</span><span class="p">(</span><span class="s2">&quot;Connection error while polling job status: </span><span class="si">{e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="o">=</span><span class="n">e</span><span class="p">))</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/openeo/rest/job.py:103,</span> in <span class="ni">BatchJob.describe</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span> <span class="nd">@openeo_endpoint</span><span class="p">(</span><span class="s2">&quot;GET /jobs/</span><span class="si">{job_id}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span> <span class="k">def</span><span class="w"> </span><span class="nf">describe</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span><span class="sd">     Get detailed metadata about a submitted batch job</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span><span class="sd">     (title, process graph, status, progress, ...).</span>
+<span class="sd">   (...)    101         This method was previously called :py:meth:`describe_job`.</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">103</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;/jobs/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">job_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">expected_status</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/openeo/rest/_connection.py:204,</span> in <span class="ni">RestApiConnection.get</span><span class="nt">(self, path, params, stream, auth, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span> <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">187</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span>     <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">193</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">194</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span><span class="sd">     Do GET request to REST API.</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span><span class="sd"> </span>
+<span class="sd">   (...)    202     :return: response: Response</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">204</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/openeo/rest/connection.py:687,</span> in <span class="ni">Connection.request</span><span class="nt">(self, method, path, headers, auth, check_error, expected_status, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">680</span>     <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Connection</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">681</span>         <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">682</span>         <span class="n">check_error</span><span class="o">=</span><span class="n">check_error</span><span class="p">,</span> <span class="n">expected_status</span><span class="o">=</span><span class="n">expected_status</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">683</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">685</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">686</span>     <span class="c1"># Initial request attempt</span>
+<span class="ne">--&gt; </span><span class="mi">687</span>     <span class="k">return</span> <span class="n">_request</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">688</span> <span class="k">except</span> <span class="n">OpenEoApiError</span> <span class="k">as</span> <span class="n">api_exc</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">689</span>     <span class="k">if</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">690</span>         <span class="n">api_exc</span><span class="o">.</span><span class="n">http_status_code</span> <span class="ow">in</span> <span class="p">{</span><span class="n">HTTP_401_UNAUTHORIZED</span><span class="p">,</span> <span class="n">HTTP_403_FORBIDDEN</span><span class="p">}</span>
+<span class="g g-Whitespace">    </span><span class="mi">691</span>         <span class="ow">and</span> <span class="n">api_exc</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="s2">&quot;TokenInvalid&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">692</span>     <span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">693</span>         <span class="c1"># Auth token expired: can we refresh?</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/openeo/rest/connection.py:680,</span> in <span class="ni">Connection.request.&lt;locals&gt;._request</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">679</span> <span class="k">def</span><span class="w"> </span><span class="nf">_request</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">680</span>     <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Connection</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">681</span>         <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">682</span>         <span class="n">check_error</span><span class="o">=</span><span class="n">check_error</span><span class="p">,</span> <span class="n">expected_status</span><span class="o">=</span><span class="n">expected_status</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">683</span>     <span class="p">)</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/openeo/rest/_connection.py:118,</span> in <span class="ni">RestApiConnection.request</span><span class="nt">(self, method, path, params, headers, auth, check_error, expected_status, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span>     <span class="n">_log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span>         <span class="s2">&quot;Request `</span><span class="si">{m}</span><span class="s2"> </span><span class="si">{u}</span><span class="s2">` with params </span><span class="si">{p}</span><span class="s2">, headers </span><span class="si">{h}</span><span class="s2">, auth </span><span class="si">{a}</span><span class="s2">, kwargs </span><span class="si">{k}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">109</span>             <span class="n">m</span><span class="o">=</span><span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">115</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">116</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">117</span> <span class="k">with</span> <span class="n">ContextTimer</span><span class="p">()</span> <span class="k">as</span> <span class="n">timer</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">118</span>     <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span>         <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span>         <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span>         <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span>         <span class="n">headers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_merged_headers</span><span class="p">(</span><span class="n">headers</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span>         <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;timeout&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_timeout</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span>         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">127</span> <span class="k">if</span> <span class="n">slow_response_threshold</span> <span class="ow">and</span> <span class="n">timer</span><span class="o">.</span><span class="n">elapsed</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">slow_response_threshold</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">128</span>     <span class="n">_log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">129</span>         <span class="s2">&quot;Slow response: `</span><span class="si">{m}</span><span class="s2"> </span><span class="si">{u}</span><span class="s2">` took </span><span class="si">{e:.2f}</span><span class="s2">s (&gt;</span><span class="si">{t:.2f}</span><span class="s2">s)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>             <span class="n">m</span><span class="o">=</span><span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">u</span><span class="o">=</span><span class="n">str_truncate</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">64</span><span class="p">),</span> <span class="n">e</span><span class="o">=</span><span class="n">timer</span><span class="o">.</span><span class="n">elapsed</span><span class="p">(),</span> <span class="n">t</span><span class="o">=</span><span class="n">slow_response_threshold</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span>     <span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/requests/sessions.py:589,</span> in <span class="ni">Session.request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="g g-Whitespace">    </span><span class="mi">584</span> <span class="n">send_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span>     <span class="s2">&quot;timeout&quot;</span><span class="p">:</span> <span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">586</span>     <span class="s2">&quot;allow_redirects&quot;</span><span class="p">:</span> <span class="n">allow_redirects</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span> <span class="p">}</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span> <span class="n">send_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">589</span> <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prep</span><span class="p">,</span> <span class="o">**</span><span class="n">send_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span> <span class="k">return</span> <span class="n">resp</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/requests/sessions.py:703,</span> in <span class="ni">Session.send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">700</span> <span class="n">start</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span> <span class="c1"># Send the request</span>
+<span class="ne">--&gt; </span><span class="mi">703</span> <span class="n">r</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span> <span class="c1"># Total elapsed time of the request (approximately)</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="n">elapsed</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/requests/adapters.py:667,</span> in <span class="ni">HTTPAdapter.send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">664</span>     <span class="n">timeout</span> <span class="o">=</span> <span class="n">TimeoutSauce</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">read</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">666</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">667</span>     <span class="n">resp</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">668</span>         <span class="n">method</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">669</span>         <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">670</span>         <span class="n">body</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">671</span>         <span class="n">headers</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">672</span>         <span class="n">redirect</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">673</span>         <span class="n">assert_same_host</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">674</span>         <span class="n">preload_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">675</span>         <span class="n">decode_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span>         <span class="n">retries</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">677</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">678</span>         <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">679</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">681</span> <span class="k">except</span> <span class="p">(</span><span class="n">ProtocolError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">682</span>     <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/urllib3/connectionpool.py:787,</span> in <span class="ni">HTTPConnectionPool.urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">784</span> <span class="n">response_conn</span> <span class="o">=</span> <span class="n">conn</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">release_conn</span> <span class="k">else</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">786</span> <span class="c1"># Make the request on the HTTPConnection object</span>
+<span class="ne">--&gt; </span><span class="mi">787</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_request</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">788</span>     <span class="n">conn</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">789</span>     <span class="n">method</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">790</span>     <span class="n">url</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">791</span>     <span class="n">timeout</span><span class="o">=</span><span class="n">timeout_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">792</span>     <span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">793</span>     <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">794</span>     <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">795</span>     <span class="n">retries</span><span class="o">=</span><span class="n">retries</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">796</span>     <span class="n">response_conn</span><span class="o">=</span><span class="n">response_conn</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">797</span>     <span class="n">preload_content</span><span class="o">=</span><span class="n">preload_content</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">798</span>     <span class="n">decode_content</span><span class="o">=</span><span class="n">decode_content</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">799</span>     <span class="o">**</span><span class="n">response_kw</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">800</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">802</span> <span class="c1"># Everything went great!</span>
+<span class="g g-Whitespace">    </span><span class="mi">803</span> <span class="n">clean_exit</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/urllib3/connectionpool.py:534,</span> in <span class="ni">HTTPConnectionPool._make_request</span><span class="nt">(self, conn, method, url, body, headers, retries, timeout, chunked, response_conn, preload_content, decode_content, enforce_content_length)</span>
+<span class="g g-Whitespace">    </span><span class="mi">532</span> <span class="c1"># Receive the response from the server</span>
+<span class="g g-Whitespace">    </span><span class="mi">533</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">534</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">535</span> <span class="k">except</span> <span class="p">(</span><span class="n">BaseSSLError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">536</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_raise_timeout</span><span class="p">(</span><span class="n">err</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout_value</span><span class="o">=</span><span class="n">read_timeout</span><span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/urllib3/connection.py:565,</span> in <span class="ni">HTTPConnection.getresponse</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">562</span> <span class="n">_shutdown</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="p">,</span> <span class="s2">&quot;shutdown&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">564</span> <span class="c1"># Get the response from http.client.HTTPConnection</span>
+<span class="ne">--&gt; </span><span class="mi">565</span> <span class="n">httplib_response</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">567</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">568</span>     <span class="n">assert_header_parsing</span><span class="p">(</span><span class="n">httplib_response</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/http/client.py:1419,</span> in <span class="ni">HTTPConnection.getresponse</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1417</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1418</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1419</span>         <span class="n">response</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1420</span>     <span class="k">except</span> <span class="ne">ConnectionError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1421</span>         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/http/client.py:331,</span> in <span class="ni">HTTPResponse.begin</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">329</span> <span class="c1"># read until we get a non-100 response</span>
+<span class="g g-Whitespace">    </span><span class="mi">330</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">331</span>     <span class="n">version</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">reason</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_status</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">332</span>     <span class="k">if</span> <span class="n">status</span> <span class="o">!=</span> <span class="n">CONTINUE</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">333</span>         <span class="k">break</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/http/client.py:292,</span> in <span class="ni">HTTPResponse._read_status</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">291</span> <span class="k">def</span><span class="w"> </span><span class="nf">_read_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">292</span>     <span class="n">line</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">readline</span><span class="p">(</span><span class="n">_MAXLINE</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;iso-8859-1&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">293</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">_MAXLINE</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">294</span>         <span class="k">raise</span> <span class="n">LineTooLong</span><span class="p">(</span><span class="s2">&quot;status line&quot;</span><span class="p">)</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/socket.py:707,</span> in <span class="ni">SocketIO.readinto</span><span class="nt">(self, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">707</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sock</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">708</span>     <span class="k">except</span> <span class="n">timeout</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">709</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_timeout_occurred</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/ssl.py:1253,</span> in <span class="ni">SSLSocket.recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1249</span>     <span class="k">if</span> <span class="n">flags</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1250</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1251</span>           <span class="s2">&quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+<span class="g g-Whitespace">   </span><span class="mi">1252</span>           <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1253</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nbytes</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1254</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1255</span>     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">nbytes</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/ssl.py:1105,</span> in <span class="ni">SSLSocket.read</span><span class="nt">(self, len, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1103</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1104</span>     <span class="k">if</span> <span class="n">buffer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1105</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1106</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1107</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -910,7 +1092,7 @@ Jumlah total data setelah interpolasi: 44
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c6898f4d357f482bed8f888cacc683d863498db70b4064dc2e1512882bd0edfc.png" src="_images/c6898f4d357f482bed8f888cacc683d863498db70b4064dc2e1512882bd0edfc.png" />
+<img alt="_images/56dcb87ea32b936c5b1ef227cef327f71f099c58544ece2efa59ab737cfd6c2c.png" src="_images/56dcb87ea32b936c5b1ef227cef327f71f099c58544ece2efa59ab737cfd6c2c.png" />
 </div>
 </div>
 <p>Data sudah ditangani missing valuenya sehingga bisa dilanjutkan ke proses selanjutnya</p>
@@ -918,17 +1100,11 @@ Jumlah total data setelah interpolasi: 44
 <section id="ubah-data-menjadi-supervised">
 <h2><strong>Ubah Data menjadi Supervised</strong><a class="headerlink" href="#ubah-data-menjadi-supervised" title="Link to this heading">#</a></h2>
 <div align="justify">
-Pada tahap ini, data deret waktu yang telah lengkap diubah menjadi format data supervised dengan menerapkan teknik sliding window. Prinsipnya, data dari beberapa hari sebelumnya digunakan sebagai variabel input untuk memprediksi nilai pada hari berikutnya. Dalam hal ini, digunakan data dari 10 hari terakhir (t-10 hingga t-1) sebagai masukan untuk memperkirakan nilai hari ke-(t). Pemilihan jendela waktu sebanyak 10 hari dilakukan untuk memberikan konteks historis yang lebih panjang, sehingga diharapkan dapat meningkatkan akurasi prediksi.<div class="cell docutils container">
+Pada tahap ini, data deret waktu yang telah lengkap diubah menjadi format data supervised dengan menerapkan teknik sliding window. Prinsipnya, data dari beberapa hari sebelumnya digunakan sebagai variabel input untuk memprediksi nilai pada hari berikutnya. Dalam hal ini, digunakan data dari 4 hari terakhir (t-4 hingga t-1) sebagai masukan untuk memperkirakan nilai hari ke-(t). Pemilihan jendela waktu sebanyak 10 hari dilakukan untuk memberikan konteks historis yang lebih panjang, sehingga diharapkan dapat meningkatkan akurasi prediksi.<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">supervised</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 
-<span class="c1"># Membuat fitur dari 10 hari sebelumnya (lag 10 sampai lag 1)</span>
-<span class="n">supervised</span><span class="p">[</span><span class="s1">&#39;t-10&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">supervised</span><span class="p">[</span><span class="s1">&#39;t-9&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
-<span class="n">supervised</span><span class="p">[</span><span class="s1">&#39;t-8&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">supervised</span><span class="p">[</span><span class="s1">&#39;t-7&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">supervised</span><span class="p">[</span><span class="s1">&#39;t-6&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-<span class="n">supervised</span><span class="p">[</span><span class="s1">&#39;t-5&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># Membuat fitur dari 4 hari sebelumnya (lag 4 sampai lag 1)</span>
 <span class="n">supervised</span><span class="p">[</span><span class="s1">&#39;t-4&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">supervised</span><span class="p">[</span><span class="s1">&#39;t-3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">supervised</span><span class="p">[</span><span class="s1">&#39;t-2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -945,9 +1121,7 @@ Pada tahap ini, data deret waktu yang telah lengkap diubah menjadi format data s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-36b5dbfe-2dc0-43e6-b22d-e484be80cb8e" class="colab-df-container">
-    <div>
+<div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -965,12 +1139,6 @@ Pada tahap ini, data deret waktu yang telah lengkap diubah menjadi format data s
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>t-10</th>
-      <th>t-9</th>
-      <th>t-8</th>
-      <th>t-7</th>
-      <th>t-6</th>
-      <th>t-5</th>
       <th>t-4</th>
       <th>t-3</th>
       <th>t-2</th>
@@ -986,12 +1154,6 @@ Pada tahap ini, data deret waktu yang telah lengkap diubah menjadi format data s
       <td>-0.000002</td>
       <td>0.000017</td>
       <td>0.000010</td>
-      <td>-0.000017</td>
-      <td>0.000026</td>
-      <td>0.000009</td>
-      <td>0.000020</td>
-      <td>-0.000005</td>
-      <td>-0.000001</td>
     </tr>
     <tr>
       <th>1</th>
@@ -1000,12 +1162,6 @@ Pada tahap ini, data deret waktu yang telah lengkap diubah menjadi format data s
       <td>0.000017</td>
       <td>0.000010</td>
       <td>-0.000017</td>
-      <td>0.000026</td>
-      <td>0.000009</td>
-      <td>0.000020</td>
-      <td>-0.000005</td>
-      <td>-0.000001</td>
-      <td>0.000010</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1014,12 +1170,6 @@ Pada tahap ini, data deret waktu yang telah lengkap diubah menjadi format data s
       <td>0.000010</td>
       <td>-0.000017</td>
       <td>0.000026</td>
-      <td>0.000009</td>
-      <td>0.000020</td>
-      <td>-0.000005</td>
-      <td>-0.000001</td>
-      <td>0.000010</td>
-      <td>0.000004</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1028,12 +1178,6 @@ Pada tahap ini, data deret waktu yang telah lengkap diubah menjadi format data s
       <td>-0.000017</td>
       <td>0.000026</td>
       <td>0.000009</td>
-      <td>0.000020</td>
-      <td>-0.000005</td>
-      <td>-0.000001</td>
-      <td>0.000010</td>
-      <td>0.000004</td>
-      <td>0.000026</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1042,12 +1186,6 @@ Pada tahap ini, data deret waktu yang telah lengkap diubah menjadi format data s
       <td>0.000026</td>
       <td>0.000009</td>
       <td>0.000020</td>
-      <td>-0.000005</td>
-      <td>-0.000001</td>
-      <td>0.000010</td>
-      <td>0.000004</td>
-      <td>0.000026</td>
-      <td>0.000023</td>
     </tr>
     <tr>
       <th>5</th>
@@ -1056,12 +1194,6 @@ Pada tahap ini, data deret waktu yang telah lengkap diubah menjadi format data s
       <td>0.000009</td>
       <td>0.000020</td>
       <td>-0.000005</td>
-      <td>-0.000001</td>
-      <td>0.000010</td>
-      <td>0.000004</td>
-      <td>0.000026</td>
-      <td>0.000023</td>
-      <td>0.000020</td>
     </tr>
     <tr>
       <th>6</th>
@@ -1070,12 +1202,6 @@ Pada tahap ini, data deret waktu yang telah lengkap diubah menjadi format data s
       <td>0.000020</td>
       <td>-0.000005</td>
       <td>-0.000001</td>
-      <td>0.000010</td>
-      <td>0.000004</td>
-      <td>0.000026</td>
-      <td>0.000023</td>
-      <td>0.000020</td>
-      <td>0.000017</td>
     </tr>
     <tr>
       <th>7</th>
@@ -1084,12 +1210,6 @@ Pada tahap ini, data deret waktu yang telah lengkap diubah menjadi format data s
       <td>-0.000005</td>
       <td>-0.000001</td>
       <td>0.000010</td>
-      <td>0.000004</td>
-      <td>0.000026</td>
-      <td>0.000023</td>
-      <td>0.000020</td>
-      <td>0.000017</td>
-      <td>0.000015</td>
     </tr>
     <tr>
       <th>8</th>
@@ -1098,12 +1218,6 @@ Pada tahap ini, data deret waktu yang telah lengkap diubah menjadi format data s
       <td>-0.000001</td>
       <td>0.000010</td>
       <td>0.000004</td>
-      <td>0.000026</td>
-      <td>0.000023</td>
-      <td>0.000020</td>
-      <td>0.000017</td>
-      <td>0.000015</td>
-      <td>0.000012</td>
     </tr>
     <tr>
       <th>9</th>
@@ -1112,226 +1226,41 @@ Pada tahap ini, data deret waktu yang telah lengkap diubah menjadi format data s
       <td>0.000010</td>
       <td>0.000004</td>
       <td>0.000026</td>
-      <td>0.000023</td>
-      <td>0.000020</td>
-      <td>0.000017</td>
-      <td>0.000015</td>
-      <td>0.000012</td>
-      <td>0.000007</td>
     </tr>
   </tbody>
 </table>
+</div></div></div>
 </div>
-    <div class="colab-df-buttons">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-36b5dbfe-2dc0-43e6-b22d-e484be80cb8e')"
-            title="Convert this dataframe to an interactive table."
-            style="display:none;">
+<span class="k">def</span><span class="w"> </span><span class="nf">mean_absolute_percentage_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Menghitung Mean Absolute Percentage Error (MAPE).</span>
+<span class="sd">    Menghindari pembagian dengan nol.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_true</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
 
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-  </svg>
-    </button>
+    <span class="c1"># Menghindari pembagian dengan nol (jika y_true ada yang 0)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">y_true</span> <span class="o">!=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">mask</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="c1"># Tidak ada data valid untuk dihitung</span>
 
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
+    <span class="c1"># Hitung MAPE hanya pada data yang y_true-nya bukan 0</span>
+    <span class="n">mape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">y_true</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span> <span class="o">/</span> <span class="n">y_true</span><span class="p">[</span><span class="n">mask</span><span class="p">]))</span> <span class="o">*</span> <span class="mi">100</span>
 
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-36b5dbfe-2dc0-43e6-b22d-e484be80cb8e button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-36b5dbfe-2dc0-43e6-b22d-e484be80cb8e');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-    <div id="df-3b843a48-6c1b-43f4-b83f-e6609d230e1f">
-      <button class="colab-df-quickchart" onclick="quickchart('df-3b843a48-6c1b-43f4-b83f-e6609d230e1f')"
-                title="Suggest charts"
-                style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-     width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-    </g>
-</svg>
-      </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-      <script>
-        async function quickchart(key) {
-          const quickchartButtonEl =
-            document.querySelector('#' + key + ' button');
-          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-          quickchartButtonEl.classList.add('colab-df-spinner');
-          try {
-            const charts = await google.colab.kernel.invokeFunction(
-                'suggestCharts', [key], {});
-          } catch (error) {
-            console.error('Error during call to suggestCharts:', error);
-          }
-          quickchartButtonEl.classList.remove('colab-df-spinner');
-          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-        }
-        (() => {
-          let quickchartButtonEl =
-            document.querySelector('#df-3b843a48-6c1b-43f4-b83f-e6609d230e1f button');
-          quickchartButtonEl.style.display =
-            google.colab.kernel.accessAllowed ? 'block' : 'none';
-        })();
-      </script>
-    </div>
-
-    </div>
-  </div>
-</div></div>
+    <span class="k">return</span> <span class="n">mape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_scores</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="normalisasi-data">
@@ -1355,19 +1284,12 @@ Pada tahap ini, data supervised yang telah terbentuk akan dinormalisasi mengguna
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil normalisasi data supervised (rentang 0–1):
-       t-10       t-9       t-8       t-7       t-6       t-5       t-4  \
-0  0.569683  0.389857  0.348678  0.731823  0.581851  0.000000  0.899808   
-1  0.389857  0.348678  0.783818  0.581851  0.000000  0.926354  0.396499   
-2  0.348678  0.783818  0.623190  0.000000  0.926354  0.556397  0.724631   
-3  0.783818  0.623190  0.000000  0.926354  0.556397  0.797591  0.000000   
-4  0.623190  0.000000  0.992169  0.556397  0.797591  0.264951  0.108131   
-
-        t-3       t-2       t-1         t  
-0  0.396499  0.741846  0.062514  0.163885  
-1  0.724631  0.062514  0.163885  0.474437  
-2  0.000000  0.163885  0.474437  0.319073  
-3  0.108131  0.474437  0.319073  0.915396  
-4  0.439390  0.319073  0.915396  0.837024  
+        t-4       t-3       t-2       t-1         t
+0  0.531893  0.363995  0.325549  0.731823  0.581851
+1  0.363995  0.325549  0.731823  0.581851  0.000000
+2  0.325549  0.731823  0.581851  0.000000  0.926354
+3  0.731823  0.581851  0.000000  0.926354  0.556397
+4  0.581851  0.000000  0.926354  0.556397  0.797591
 </pre></div>
 </div>
 </div>
@@ -1400,37 +1322,25 @@ Pada tahap ini, model KNN Regressor dari library Scikit-learn akan diterapkan un
 <span class="c1"># ✅ Prediksi pada data testing</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-<span class="c1"># ✅ Evaluasi performa model</span>
-<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluasi Model KNN:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - Mean Squared Error (MSE): </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - R² Score: </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
 <span class="c1"># ✅ (Opsional) Lihat hasil prediksi</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">&#39;Actual&#39;</span><span class="p">:</span> <span class="n">y_test</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
     <span class="s1">&#39;Predicted&#39;</span><span class="p">:</span> <span class="n">y_pred</span>
 <span class="p">})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">hasil prediksi:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hasil prediksi:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Evaluasi Model KNN:
-  - Mean Squared Error (MSE): 0.1244
-  - R² Score: -0.0628
-
-hasil prediksi:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil prediksi:
      Actual  Predicted
-0  0.875590   0.510026
-1  0.737332   0.544162
-2  0.671656   0.525821
-3  1.000000   0.479034
-4  0.527529   0.505685
+0  0.606973   0.625030
+1  0.902455   0.586261
+2  0.794052   0.643368
+3  0.742558   0.637894
+4  1.000000   0.643007
 </pre></div>
 </div>
 </div>
@@ -1460,21 +1370,21 @@ Berdasarkan hasil evaluasi model, diperoleh nilai Mean Squared Error (MSE) sebes
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil prediksi KNN Regressor:
      Actual  Predicted     Error
-0  0.875590   0.510026 -0.365565
-1  0.737332   0.544162 -0.193170
-2  0.671656   0.525821 -0.145835
-3  1.000000   0.479034 -0.520966
-4  0.527529   0.505685 -0.021844
+0  0.606973   0.625030  0.018058
+1  0.902455   0.586261 -0.316194
+2  0.794052   0.643368 -0.150684
+3  0.742558   0.637894 -0.104664
+4  1.000000   0.643007 -0.356993
 
 Ringkasan error:
-count    11.0000
-mean     -0.0412
-std       0.3674
-min      -0.5210
-25%      -0.3406
-50%      -0.1458
-75%       0.2670
-max       0.5029
+count    12.0000
+mean     -0.0235
+std       0.2518
+min      -0.3570
+25%      -0.2324
+50%      -0.0433
+75%       0.1584
+max       0.3850
 Name: Error, dtype: float64
 </pre></div>
 </div>
@@ -1508,7 +1418,7 @@ Name: Error, dtype: float64
 <span class="c1"># === Bagi data ===</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="c1"># === Model ===</span>
+<span class="c1"># === Model KNN ===</span>
 <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
 <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
@@ -1517,9 +1427,15 @@ Name: Error, dtype: float64
 <span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 <span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 
+<span class="c1"># === Hitung MAPE ===</span>
+<span class="c1"># Tambahkan epsilon kecil untuk menghindari pembagian dengan nol</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-10</span>
+<span class="n">mape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">y_test</span> <span class="o">+</span> <span class="n">epsilon</span><span class="p">)))</span> <span class="o">*</span> <span class="mi">100</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluasi Model:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - MSE : </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - R²  : </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - MSE  : </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - R²   : </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - MAPE : </span><span class="si">{</span><span class="n">mape</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> %</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># === Prediksi otomatis hari berikutnya ===</span>
 <span class="n">next_day</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1529,17 +1445,17 @@ Name: Error, dtype: float64
 
 <span class="c1"># === Hasil ===</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nilai hasil prediksi (skala normalisasi): </span><span class="si">{</span><span class="n">next_pred_scaled</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Prediksi konsentrasi NO₂ pada </span><span class="si">{</span><span class="n">next_day</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">next_pred</span><span class="si">:</span><span class="s2">.10f</span><span class="si">}</span><span class="s2"> µg/m³&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prediksi konsentrasi NO₂ pada </span><span class="si">{</span><span class="n">next_day</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">next_pred</span><span class="si">:</span><span class="s2">.10f</span><span class="si">}</span><span class="s2"> µg/m³&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Evaluasi Model:
-  - MSE : 0.063296
-  - R²  : -0.143496
+  - MSE  : 0.063296
+  - R²   : -0.143496
+  - MAPE : 44.20 %
 
 Nilai hasil prediksi (skala normalisasi): 0.602460
-
 Prediksi konsentrasi NO₂ pada 2025-10-15: 0.0000106509 µg/m³
 </pre></div>
 </div>
@@ -1547,64 +1463,195 @@ Prediksi konsentrasi NO₂ pada 2025-10-15: 0.0000106509 µg/m³
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsRegressor</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">timedelta</span>
 
-<span class="c1"># Baca data</span>
+<span class="c1"># === Baca data ===</span>
 <span class="n">no2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;NO2_Kabupaten_Sumenep.csv&#39;</span><span class="p">)</span>
-
-<span class="c1"># Ubah kolom tanggal</span>
 <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">no2</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">])</span>
 <span class="n">no2</span> <span class="o">=</span> <span class="n">no2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
 
-<span class="c1"># Normalisasi</span>
+<span class="c1"># === Siapkan fitur numerik ===</span>
+<span class="n">no2</span><span class="p">[</span><span class="s1">&#39;day_index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">no2</span><span class="p">))</span>
+
+<span class="c1"># === Normalisasi ===</span>
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
 <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2_scaled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">no2</span><span class="p">[[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]])</span>
 
-<span class="c1"># Buat fitur waktu (indeks numerik)</span>
-<span class="n">no2</span><span class="p">[</span><span class="s1">&#39;day_index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">no2</span><span class="p">))</span>
-
-<span class="c1"># Pisahkan fitur dan target</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[[</span><span class="s1">&#39;day_index&#39;</span><span class="p">]]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2_scaled&#39;</span><span class="p">]</span>
 
-<span class="c1"># Latih model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="c1"># === Bagi data ===</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="c1"># Evaluasi model</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="c1"># === Model KNN ===</span>
+<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
-<span class="c1"># Prediksi otomatis hari berikutnya</span>
+<span class="c1"># === Evaluasi ===</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="c1"># === Hitung MAPE di skala normalisasi agar sama ===</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-10</span>
+<span class="n">mape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">y_test</span> <span class="o">+</span> <span class="n">epsilon</span><span class="p">)))</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluasi Model:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - MSE  : </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - R²   : </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - MAPE : </span><span class="si">{</span><span class="n">mape</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> %</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># === Prediksi otomatis hari berikutnya ===</span>
 <span class="n">next_day</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">next_day_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">no2</span><span class="p">[</span><span class="s1">&#39;day_index&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]])</span>
-<span class="n">next_pred_scaled</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">next_day_index</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">next_input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">no2</span><span class="p">[</span><span class="s1">&#39;day_index&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">next_pred_scaled</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">next_input</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">next_pred</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([[</span><span class="n">next_pred_scaled</span><span class="p">]])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="c1"># === Plot besar ===</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>  <span class="c1"># Ukuran besar</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nilai hasil prediksi (skala normalisasi): </span><span class="si">{</span><span class="n">next_pred_scaled</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prediksi konsentrasi NO₂ pada </span><span class="si">{</span><span class="n">next_day</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">next_pred</span><span class="si">:</span><span class="s2">.10f</span><span class="si">}</span><span class="s2"> µg/m³</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># === Tentukan kategori berdasarkan data historis ===</span>
+<span class="n">median_val</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.50</span><span class="p">)</span>
+<span class="n">upper_quantile_val</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">next_pred</span> <span class="o">&lt;=</span> <span class="n">median_val</span><span class="p">:</span>
+    <span class="n">kategori</span> <span class="o">=</span> <span class="s2">&quot;Baik&quot;</span>
+    <span class="n">penjelasan</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Nilai ini berada di bawah atau sama dengan batas baik (median: </span><span class="si">{</span><span class="n">median_val</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">).&quot;</span>
+<span class="k">elif</span> <span class="n">next_pred</span> <span class="o">&lt;=</span> <span class="n">upper_quantile_val</span><span class="p">:</span>
+    <span class="n">kategori</span> <span class="o">=</span> <span class="s2">&quot;Sedang&quot;</span>
+    <span class="n">penjelasan</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Nilai ini di atas median, tapi di bawah kuantil atas (</span><span class="si">{</span><span class="n">upper_quantile_val</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">).&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">kategori</span> <span class="o">=</span> <span class="s2">&quot;Tinggi (Tidak Baik)&quot;</span>
+    <span class="n">penjelasan</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Nilai ini berada di atas 75% dari data historis Anda (lebih tinggi dari </span><span class="si">{</span><span class="n">upper_quantile_val</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">).&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kategori Prediksi : **</span><span class="si">{</span><span class="n">kategori</span><span class="si">}</span><span class="s2">**&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Penjelasan        : </span><span class="si">{</span><span class="n">penjelasan</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-------------------------------------------------&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Evaluasi Model:
+  - MSE  : 0.063296
+  - R²   : -0.143496
+  - MAPE : 44.20 %
+
+Nilai hasil prediksi (skala normalisasi): 0.602460
+Prediksi konsentrasi NO₂ pada 2025-10-15: 0.0000106509 µg/m³
+
+-------------------------------------------------
+Kategori Prediksi : **Baik**
+Penjelasan        : Nilai ini berada di bawah atau sama dengan batas baik (median: 0.000011).
+-------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">timedelta</span>
+
+<span class="c1"># === Baca data ===</span>
+<span class="n">no2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;NO2_Kabupaten_Sumenep.csv&#39;</span><span class="p">)</span>
+<span class="n">no2</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">no2</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">])</span>
+<span class="n">no2</span> <span class="o">=</span> <span class="n">no2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+
+<span class="c1"># === Fitur waktu numerik ===</span>
+<span class="n">no2</span><span class="p">[</span><span class="s1">&#39;day_index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">no2</span><span class="p">))</span>
+
+<span class="c1"># === Normalisasi NO2 ===</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2_scaled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">no2</span><span class="p">[[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]])</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[[</span><span class="s1">&#39;day_index&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2_scaled&#39;</span><span class="p">]</span>
+
+<span class="c1"># === Bagi data train/test (70/30) ===</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># === Latih KNN ===</span>
+<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># === Prediksi test set ===</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># === Evaluasi model ===</span>
+<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-10</span>
+<span class="n">mape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">y_test</span> <span class="o">+</span> <span class="n">epsilon</span><span class="p">)))</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluasi Model:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - MSE  : </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - R²   : </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - MAPE : </span><span class="si">{</span><span class="n">mape</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> %</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># === Prediksi hari berikutnya ===</span>
+<span class="n">next_day</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">next_input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">no2</span><span class="p">[</span><span class="s1">&#39;day_index&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">next_pred_scaled</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">next_input</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">next_pred</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([[</span><span class="n">next_pred_scaled</span><span class="p">]])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nilai hasil prediksi (skala normalisasi): </span><span class="si">{</span><span class="n">next_pred_scaled</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prediksi konsentrasi NO₂ pada </span><span class="si">{</span><span class="n">next_day</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">next_pred</span><span class="si">:</span><span class="s2">.10f</span><span class="si">}</span><span class="s2"> µg/m³</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># === Tentukan kategori ===</span>
+<span class="n">median_val</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.50</span><span class="p">)</span>
+<span class="n">upper_quantile_val</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">next_pred</span> <span class="o">&lt;=</span> <span class="n">median_val</span><span class="p">:</span>
+    <span class="n">kategori</span> <span class="o">=</span> <span class="s2">&quot;Baik&quot;</span>
+    <span class="n">penjelasan</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Nilai ini berada di bawah atau sama dengan batas baik (median: </span><span class="si">{</span><span class="n">median_val</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">).&quot;</span>
+<span class="k">elif</span> <span class="n">next_pred</span> <span class="o">&lt;=</span> <span class="n">upper_quantile_val</span><span class="p">:</span>
+    <span class="n">kategori</span> <span class="o">=</span> <span class="s2">&quot;Sedang&quot;</span>
+    <span class="n">penjelasan</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Nilai ini di atas median, tapi di bawah kuantil atas (</span><span class="si">{</span><span class="n">upper_quantile_val</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">).&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">kategori</span> <span class="o">=</span> <span class="s2">&quot;Tinggi (Tidak Baik)&quot;</span>
+    <span class="n">penjelasan</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Nilai ini berada di atas 75% dari data historis (lebih tinggi dari </span><span class="si">{</span><span class="n">upper_quantile_val</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">).&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kategori Prediksi : **</span><span class="si">{</span><span class="n">kategori</span><span class="si">}</span><span class="s2">**&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Penjelasan        : </span><span class="si">{</span><span class="n">penjelasan</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-------------------------------------------------&quot;</span><span class="p">)</span>
+
+<span class="c1"># === Plot ===</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+
+<span class="c1"># Data asli</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">no2</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">],</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#7A7A7A&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Asli&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">no2</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">],</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#FFA500&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Titik NO₂&#39;</span><span class="p">)</span>
 
-<span class="c1"># Garis prediksi</span>
+<span class="c1"># Garis prediksi KNN pada test set</span>
+<span class="n">test_index</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="s1">&#39;day_index&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">no2</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_index</span><span class="p">],</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_pred</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span>
+         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#00CC66&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Prediksi KNN Test&#39;</span><span class="p">)</span>
+
+<span class="c1"># Garis prediksi hari berikutnya</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">no2</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">next_day</span><span class="p">],</span>
          <span class="p">[</span><span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">next_pred</span><span class="p">],</span>
-         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#007ACC&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Prediksi&#39;</span><span class="p">)</span>
+         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#007ACC&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Prediksi Hari Berikutnya&#39;</span><span class="p">)</span>
 
-<span class="c1"># Titik prediksi</span>
+<span class="c1"># Titik prediksi hari berikutnya</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">next_day</span><span class="p">,</span> <span class="n">next_pred</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#007ACC&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">next_day</span><span class="p">,</span> <span class="n">next_pred</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">next_pred</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#007ACC&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">next_day</span><span class="p">,</span> <span class="n">next_pred</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">next_pred</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#007ACC&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
 
 <span class="c1"># Tampilan umum</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Prediksi Konsentrasi NO2&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2F4F4F&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Prediksi Konsentrasi NO₂ (KNN)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2F4F4F&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Tanggal&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#333333&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Konsentrasi NO₂ (µg/m³)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#333333&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
@@ -1617,7 +1664,80 @@ Prediksi konsentrasi NO₂ pada 2025-10-15: 0.0000106509 µg/m³
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7872a795fda3e8ccd6a9e2338f9de7adf9b1dcb9e8501bd5daa8e6d3ab6c121e.png" src="_images/7872a795fda3e8ccd6a9e2338f9de7adf9b1dcb9e8501bd5daa8e6d3ab6c121e.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Evaluasi Model:
+  - MSE  : 0.063296
+  - R²   : -0.143496
+  - MAPE : 44.20 %
+
+Nilai hasil prediksi (skala normalisasi): 0.602460
+Prediksi konsentrasi NO₂ pada 2025-10-15: 0.0000106509 µg/m³
+
+-------------------------------------------------
+Kategori Prediksi : **Baik**
+Penjelasan        : Nilai ini berada di bawah atau sama dengan batas baik (median: 0.000011).
+-------------------------------------------------
+</pre></div>
+</div>
+<img alt="_images/97028cb98fd71137498a052318b1c51126929dafaa14967fa7f56ef53246dd9d.png" src="_images/97028cb98fd71137498a052318b1c51126929dafaa14967fa7f56ef53246dd9d.png" />
+</div>
+</div>
+</section>
+<section id="deployment">
+<h2>Deployment<a class="headerlink" href="#deployment" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsRegressor</span>
+
+<span class="c1"># === Baca dan olah data ===</span>
+<span class="n">no2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;NO2_Kabupaten_Sumenep.csv&#39;</span><span class="p">)</span>
+<span class="n">no2</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">no2</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">])</span>
+<span class="n">no2</span> <span class="o">=</span> <span class="n">no2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+
+<span class="c1"># Buat fitur numerik</span>
+<span class="n">no2</span><span class="p">[</span><span class="s1">&#39;day_index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">no2</span><span class="p">))</span>
+
+<span class="c1"># Normalisasi</span>
+<span class="n">scaler_h3</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2_scaled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler_h3</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">no2</span><span class="p">[[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Dataset yang akan disimpan</span>
+<span class="n">new_df</span> <span class="o">=</span> <span class="n">no2</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Pisahkan fitur dan target</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[[</span><span class="s1">&#39;day_index&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">no2</span><span class="p">[</span><span class="s1">&#39;NO2_scaled&#39;</span><span class="p">]</span>
+
+<span class="c1"># Bagi data train/test</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Latih model KNN</span>
+<span class="n">knn_h3</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">knn_h3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># === Simpan model, scaler, dan dataset ===</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">knn_h3</span><span class="p">,</span> <span class="s2">&quot;model_h3.pkl&quot;</span><span class="p">)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">scaler_h3</span><span class="p">,</span> <span class="s2">&quot;scaler_h3.pkl&quot;</span><span class="p">)</span>
+<span class="n">new_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data_no2.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ File berhasil disimpan:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- model_h3.pkl&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- scaler_h3.pkl&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- data_no2.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ File berhasil disimpan:
+- model_h3.pkl
+- scaler_h3.pkl
+- data_no2.csv
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -1688,6 +1808,7 @@ Prediksi konsentrasi NO₂ pada 2025-10-15: 0.0000106509 µg/m³
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubah-data-menjadi-supervised"><strong>Ubah Data menjadi Supervised</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data"><strong>Normalisasi Data</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling"><strong>Modeling</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment">Deployment</a></li>
 </ul>
   </nav></div>
 
