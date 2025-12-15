@@ -1,0 +1,7 @@
+/* Membuat logo sidebar Jupyter Book menjadi bulat */
+.bd-sidebar .navbar-brand img,
+.sidebar-logo img,
+img.logo {
+    border-radius: 50%;
+    object-fit: cover;
+}
