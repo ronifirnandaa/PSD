@@ -1,0 +1,1577 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Time-Series Classification untuk Prediksi Tingkat Nyeri (EMOPain Dataset) &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'UAS_PSD_EMOPain';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Time Series dataset for prediction" href="Peramalan_waktu.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpeg" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.jpeg" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Profil Mahasiswa
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Tahapan_CRISP-DM.html">Tahapan CRISP-DM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Peramalan_waktu.html"><strong>Time Series dataset for prediction</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Time-Series Classification untuk Prediksi Tingkat Nyeri (EMOPain Dataset)</strong></a></li>
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FUAS_PSD_EMOPain.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/UAS_PSD_EMOPain.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Time-Series Classification untuk Prediksi Tingkat Nyeri (EMOPain Dataset)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Time-Series Classification untuk Prediksi Tingkat Nyeri (EMOPain Dataset)</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#business-understanding"><strong>1. Business Understanding</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latar-belakang"><strong>1.1 Latar Belakang</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permasalahan-bisnis"><strong>1.2 Permasalahan Bisnis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan"><strong>1.3 Tujuan</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manfaat"><strong>1.4 Manfaat</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding"><strong>2. Data Understanding</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sumber-data"><strong>2.1 Sumber Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-dataset"><strong>2.2 Struktur Dataset</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-30-channel-sensor"><strong>2.3 Deskripsi 30 Channel Sensor</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#label-data"><strong>2.4 Label Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-dan-import-library"><strong>Install dan import Library</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data-dan-penggabungan-dataset"><strong>Load Data dan Penggabungan Dataset</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-dataset"><strong>Contoh dataset</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-visualisasi-contoh-data"><strong>Menampilkan visualisasi contoh data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengecek-missing-value"><strong>Mengecek Missing Value</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-jumlah-dan-sebaran-target"><strong>Visualisasi Jumlah dan Sebaran Target</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-grafik-setiap-kelas"><strong>Menampilkan grafik setiap kelas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cek-duplikasi"><strong>Cek Duplikasi</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-preprocessing"><strong>3. Tahap Preprocessing</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pembagian-dataset-untuk-training-testing-dan-manual-testing"><strong>Pembagian Dataset untuk Training, Testing, dan Manual Testing</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-jumlah-dan-sebaran-target-di-data-train"><strong>Visualisasi Jumlah dan Sebaran Target di data Train</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#balancing-data-untuk-data-training"><strong>Balancing Data untuk data Training</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data-training-setelah-proses-balancing-data"><strong>Visualisasi Data Training setelah proses Balancing Data</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling"><strong>4. Modeling</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi"><strong>5. Evaluasi</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment"><strong>6. Deployment</strong></a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="time-series-classification-untuk-prediksi-tingkat-nyeri-emopain-dataset">
+<h1><strong>Time-Series Classification untuk Prediksi Tingkat Nyeri (EMOPain Dataset)</strong><a class="headerlink" href="#time-series-classification-untuk-prediksi-tingkat-nyeri-emopain-dataset" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="business-understanding">
+<h1><strong>1. Business Understanding</strong><a class="headerlink" href="#business-understanding" title="Link to this heading">#</a></h1>
+<section id="latar-belakang">
+<h2><strong>1.1 Latar Belakang</strong><a class="headerlink" href="#latar-belakang" title="Link to this heading">#</a></h2>
+<div align="justify"> Nyeri kronis merupakan permasalahan kesehatan yang signifikan dan berdampak luas, tidak hanya bagi individu yang mengalaminya, tetapi juga bagi keluarga, penyedia layanan kesehatan, dan masyarakat secara keseluruhan. Kondisi ini sering kali membatasi kemampuan seseorang dalam melakukan aktivitas fisik sehari-hari, sehingga menurunkan kualitas hidup dan produktivitas.
+<p>Nyeri kronis dipahami bukan hanya sebagai fenomena fisiologis, tetapi juga sebagai pengalaman kompleks yang melibatkan aspek fisik, psikologis, dan sosial. Oleh karena itu, diperlukan pendekatan berbasis teknologi yang mampu menilai tingkat nyeri secara objektif melalui pengamatan perilaku dan pola gerakan tubuh.</p>
+<p><strong>Human Activity Recognition (HAR)</strong> menawarkan pendekatan berbasis data sensor untuk mengenali aktivitas dan kondisi manusia melalui analisis sinyal gerakan dan aktivitas otot. Dengan memanfaatkan HAR, tingkat nyeri dapat diprediksi berdasarkan perubahan pola gerakan yang muncul akibat keterbatasan fisik atau kompensasi gerak pada individu dengan nyeri kronis.</p>
+</section>
+<section id="permasalahan-bisnis">
+<h2><strong>1.2 Permasalahan Bisnis</strong><a class="headerlink" href="#permasalahan-bisnis" title="Link to this heading">#</a></h2>
+<p>Penilaian tingkat nyeri saat ini masih sangat bergantung pada laporan subjektif pasien, seperti skala nyeri numerik atau kuesioner. Metode ini rentan terhadap bias persepsi, perbedaan ambang toleransi nyeri, serta ketidakkonsistenan pelaporan antar individu.</p>
+<p>Belum tersedianya sistem otomatis berbasis data gerakan tubuh yang mampu mengklasifikasikan tingkat nyeri secara akurat menjadi tantangan utama dalam pemantauan dan manajemen nyeri kronis, khususnya dalam konteks rehabilitasi dan aktivitas fisik sehari-hari.</p>
+</section>
+<section id="tujuan">
+<h2><strong>1.3 Tujuan</strong><a class="headerlink" href="#tujuan" title="Link to this heading">#</a></h2>
+<p>Penelitian ini bertujuan untuk mengembangkan model klasifikasi <strong>HAR</strong> guna mengenali tingkat nyeri seseorang berdasarkan pola gerakan tubuh dan sinyal aktivitas otot.</p>
+<p>Tujuan utamanya sendiri adalah :</p>
+<ol class="arabic">
+<li><p>Mengklasifikasikan kondisi individu ke dalam tiga kelas:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> a. 0 : Sehat
+
+ b. 1 : Nyeri tingkat rendah
+
+ c. 2 : Nyeri tingkat tinggi
+</pre></div>
+</div>
+</li>
+<li><p>Menganalisis hubungan antara pola gerakan tubuh dan tingkat nyeri kronis.</p></li>
+<li><p>Mendukung pengembangan sistem pemantauan nyeri otomatis yang objektif.</p></li>
+</ol>
+</section>
+<section id="manfaat">
+<h2><strong>1.4 Manfaat</strong><a class="headerlink" href="#manfaat" title="Link to this heading">#</a></h2>
+<p>Penelitian ini diharapkan dapat memberikan manfaat sebagai berikut:</p>
+<ol class="arabic simple">
+<li><p>Menyediakan dasar pengembangan sistem penilaian nyeri yang lebih objektif dan berbasis data sensor.</p></li>
+<li><p>Membantu tenaga medis dalam proses pengambilan keputusan klinis.</p></li>
+<li><p>Mendukung pengembangan teknologi rehabilitasi dan pemantauan aktivitas fisik berbasis sensor.</p></li>
+</ol>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
+<h1><strong>2. Data Understanding</strong><a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
+<section id="sumber-data">
+<h2><strong>2.1 Sumber Data</strong><a class="headerlink" href="#sumber-data" title="Link to this heading">#</a></h2>
+<div align="justify">Data yang digunakan dalam tugas ini berasal dari EmoPain Challenge 2020 yang bisa di akses melalui github dengan link berikut ini :
+<p><a class="github reference external" href="https://github.com/Mvrjustid/EmoPainChallenge2020.git">Mvrjustid/EmoPainChallenge2020.git</a></p>
+<p>Dataset ini juga tersedia secara publik melalui repository Time Series Classification (TSC) pada situs resminya dengan memasukkan kata kunci EMOPain :</p>
+<p><a class="reference external" href="https://www.timeseriesclassification.com/dataset.php">https://www.timeseriesclassification.com/dataset.php</a></p>
+<p>Dataset EmoPain pada repository TSC merupakan versi yang telah diproses dan distandarisasi dalam format time series classification, sehingga memudahkan penggunaan untuk eksperimen machine learning berbasis data deret waktu.</p>
+<p>Data asli berisi:</p>
+<ol class="arabic simple">
+<li><p>Set pelatihan: 10 peserta dengan nyeri kronis dan 6 peserta sehat</p></li>
+<li><p>Set validasi: 4 peserta dengan nyeri kronis dan 3 peserta sehat</p></li>
+</ol>
+<p>Setiap peserta melakukan serangkaian aktivitas fisik yang merepresentasikan gerakan fungsional dalam kehidupan sehari-hari. Data gerakan tersebut kemudian disegmentasi dan disusun menjadi instance time series dengan panjang tetap untuk keperluan klasifikasi.</p>
+</section>
+<section id="struktur-dataset">
+<h2><strong>2.2 Struktur Dataset</strong><a class="headerlink" href="#struktur-dataset" title="Link to this heading">#</a></h2>
+<p>Berdasarkan deskripsi pada repository Time Series Classification, struktur dataset EmoPain adalah sebagai berikut:</p>
+<ol class="arabic simple">
+<li><p>Jumlah sampel: 1323</p></li>
+<li><p>Jumlah channel ( hasil dari sensor ) : 30</p></li>
+<li><p>Panjang time series: 180 titik waktu per channel (saat di proses ternyata 200)</p></li>
+<li><p>Label kelas: ordinal (0, 1, 2)</p></li>
+</ol>
+</section>
+<section id="deskripsi-30-channel-sensor">
+<h2><strong>2.3 Deskripsi 30 Channel Sensor</strong><a class="headerlink" href="#deskripsi-30-channel-sensor" title="Link to this heading">#</a></h2>
+<p>Setiap instance data terdiri dari 30 channel, di mana setiap channel merepresentasikan satu sinyal sensor atau satu jenis pengukuran yang berkaitan dengan gerakan tubuh.</p>
+<p>Ke-30 channel tersebut mengukur fitur-fitur seperti:</p>
+<ul class="simple">
+<li><p>Sudut sendi tubuh (misalnya sudut siku, leher, dan sendi lainnya)</p></li>
+<li><p>Aktivitas otot permukaan (surface Electromyography / sEMG) yang telah diproses dalam bentuk sinyal</p></li>
+</ul>
+<p>Dataset EmoPain versi TSC ataupun githubnya tidak menyediakan nama sensor secara eksplisit, sehingga channel direpresentasikan berdasarkan indeks numerik, yaitu Channel 0 hingga Channel 29.</p>
+</section>
+<section id="label-data">
+<h2><strong>2.4 Label Data</strong><a class="headerlink" href="#label-data" title="Link to this heading">#</a></h2>
+<p>Nilai kelas pada dataset bersifat ordinal dan merepresentasikan tingkat nyeri, yaitu:</p>
+<p>0 – Sehat : peserta tanpa nyeri kronis</p>
+<p>1 – Nyeri tingkat rendah : peserta dengan nyeri kronis ringan</p>
+<p>2 – Nyeri tingkat tinggi : peserta dengan nyeri kronis berat</p>
+</section>
+<section id="install-dan-import-library">
+<h2><strong>Install dan import Library</strong><a class="headerlink" href="#install-dan-import-library" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">packaging</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: packaging in /usr/local/python/3.12.1/lib/python3.12/site-packages (25.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sktime</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: sktime in /usr/local/python/3.12.1/lib/python3.12/site-packages (0.40.1)
+Requirement already satisfied: joblib&lt;1.6,&gt;=1.2.0 in /home/codespace/.local/lib/python3.12/site-packages (from sktime) (1.5.2)
+Requirement already satisfied: numpy&lt;2.4,&gt;=1.21 in /home/codespace/.local/lib/python3.12/site-packages (from sktime) (2.3.4)
+Requirement already satisfied: packaging in /usr/local/python/3.12.1/lib/python3.12/site-packages (from sktime) (25.0)
+Requirement already satisfied: pandas&lt;2.4.0,&gt;=1.1 in /home/codespace/.local/lib/python3.12/site-packages (from sktime) (2.3.3)
+Requirement already satisfied: scikit-base&lt;0.14.0,&gt;=0.6.1 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from sktime) (0.13.0)
+Requirement already satisfied: scikit-learn&lt;1.8.0,&gt;=0.24 in /home/codespace/.local/lib/python3.12/site-packages (from sktime) (1.7.2)
+Requirement already satisfied: scipy&lt;2.0.0,&gt;=1.2 in /home/codespace/.local/lib/python3.12/site-packages (from sktime) (1.16.3)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: python-dateutil&gt;=2.8.2 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from pandas&lt;2.4.0,&gt;=1.1-&gt;sktime) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /home/codespace/.local/lib/python3.12/site-packages (from pandas&lt;2.4.0,&gt;=1.1-&gt;sktime) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from pandas&lt;2.4.0,&gt;=1.1-&gt;sktime) (2025.3)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /home/codespace/.local/lib/python3.12/site-packages (from scikit-learn&lt;1.8.0,&gt;=0.24-&gt;sktime) (3.6.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: six&gt;=1.5 in /usr/local/python/3.12.1/lib/python3.12/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&lt;2.4.0,&gt;=1.1-&gt;sktime) (1.17.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">imbalanced</span><span class="o">-</span><span class="n">learn</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: imbalanced-learn in /usr/local/python/3.12.1/lib/python3.12/site-packages (0.14.0)
+Requirement already satisfied: numpy&lt;3,&gt;=1.25.2 in /home/codespace/.local/lib/python3.12/site-packages (from imbalanced-learn) (2.3.4)
+Requirement already satisfied: scipy&lt;2,&gt;=1.11.4 in /home/codespace/.local/lib/python3.12/site-packages (from imbalanced-learn) (1.16.3)
+Requirement already satisfied: scikit-learn&lt;2,&gt;=1.4.2 in /home/codespace/.local/lib/python3.12/site-packages (from imbalanced-learn) (1.7.2)
+Requirement already satisfied: joblib&lt;2,&gt;=1.2.0 in /home/codespace/.local/lib/python3.12/site-packages (from imbalanced-learn) (1.5.2)
+Requirement already satisfied: threadpoolctl&lt;4,&gt;=2.0.0 in /home/codespace/.local/lib/python3.12/site-packages (from imbalanced-learn) (3.6.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import Library yang Dibutuhkan</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sktime.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_from_tsfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">SMOTE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+
+<span class="c1"># Matplotlib style</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;ggplot&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-data-dan-penggabungan-dataset">
+<h2><strong>Load Data dan Penggabungan Dataset</strong><a class="headerlink" href="#load-data-dan-penggabungan-dataset" title="Link to this heading">#</a></h2>
+<div align="justify">Melakukan load dataset dan menampilkan informasi awal dataset untuk memastikan data terbaca dengan baik,kemudian label yang awalnya berupa string dikonversi menjadi numerik agar dapat mudah diproses oleh algoritma machine learning yang memerlukan label numerik.Setelah itu, data train dan test digabung menjadi satu dataset utuh untuk memudahkan tahapan preprocessing nantinya.<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Load Data EMOPain dari file .ts&quot;</span><span class="p">)</span>
+
+<span class="c1"># path sesuai lokasi file kamu</span>
+<span class="n">X_train_raw</span><span class="p">,</span> <span class="n">y_train_raw</span> <span class="o">=</span> <span class="n">load_from_tsfile</span><span class="p">(</span>
+    <span class="s2">&quot;EMOPain_TRAIN.ts&quot;</span><span class="p">,</span>
+    <span class="n">return_data_type</span><span class="o">=</span><span class="s2">&quot;nested_univ&quot;</span>
+<span class="p">)</span>
+
+<span class="n">X_test_raw</span><span class="p">,</span> <span class="n">y_test_raw</span> <span class="o">=</span> <span class="n">load_from_tsfile</span><span class="p">(</span>
+    <span class="s2">&quot;EMOPain_TEST.ts&quot;</span><span class="p">,</span>
+    <span class="n">return_data_type</span><span class="o">=</span><span class="s2">&quot;nested_univ&quot;</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Informasi Dataset&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Train samples : </span><span class="si">{</span><span class="n">X_train_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test samples  : </span><span class="si">{</span><span class="n">X_test_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah channel: </span><span class="si">{</span><span class="n">X_train_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Panjang time series : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train_raw</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Cek tipe data label sebelum konversi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sebelum konversi:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_train_raw</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dtype:&quot;</span><span class="p">,</span> <span class="n">y_train_raw</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+<span class="c1"># Konversi label ke integer</span>
+<span class="n">y_train_raw</span> <span class="o">=</span> <span class="n">y_train_raw</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">y_test_raw</span> <span class="o">=</span> <span class="n">y_test_raw</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># Cek setelah konversi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sesudah konversi:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_train_raw</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dtype:&quot;</span><span class="p">,</span> <span class="n">y_train_raw</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+<span class="c1">#Menggabungkan data train dan test</span>
+<span class="n">X_total</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X_train_raw</span><span class="p">,</span> <span class="n">X_test_raw</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">y_total</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_train_raw</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_test_raw</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Informasi data gabungan</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Informasi Dataset Gabungan&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total samples : </span><span class="si">{</span><span class="n">X_total</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah channel: </span><span class="si">{</span><span class="n">X_total</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Panjang time series : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_total</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Load Data EMOPain dari file .ts
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Informasi Dataset
+Train samples : 968
+Test samples  : 355
+Jumlah channel: 30
+Panjang time series : 200
+
+Sebelum konversi:
+[&#39;0&#39; &#39;0&#39; &#39;0&#39; &#39;0&#39; &#39;0&#39; &#39;0&#39; &#39;0&#39; &#39;0&#39; &#39;0&#39; &#39;0&#39;]
+dtype: &lt;U1
+
+Sesudah konversi:
+[0 0 0 0 0 0 0 0 0 0]
+dtype: int64
+
+Informasi Dataset Gabungan
+Total samples : 1323
+Jumlah channel: 30
+Panjang time series : 200
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="contoh-dataset">
+<h2><strong>Contoh dataset</strong><a class="headerlink" href="#contoh-dataset" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contoh 1 sampel data time-series:&quot;</span><span class="p">)</span>
+
+<span class="c1"># Pilih index sampel</span>
+<span class="n">sample_idx</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Ambil label dan data</span>
+<span class="n">sample_label</span> <span class="o">=</span> <span class="n">y_total</span><span class="p">[</span><span class="n">sample_idx</span><span class="p">]</span>
+<span class="n">sample_data</span> <span class="o">=</span> <span class="n">X_total</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">sample_idx</span><span class="p">]</span>  <span class="c1"># Ini seluruh row (semua channel)</span>
+
+<span class="c1"># Tampilkan info</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Index sampel: </span><span class="si">{</span><span class="n">sample_idx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Label sampel: </span><span class="si">{</span><span class="n">sample_label</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Tampilkan 5 channel pertama</span>
+<span class="k">for</span> <span class="n">ch_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">sample_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Channel </span><span class="si">{</span><span class="n">ch_idx</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">sample_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ch_idx</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Contoh 1 sampel data time-series:
+
+Index sampel: 0
+Label sampel: 0
+
+Channel 0 : [1.061  1.0611 1.0612 1.0613 1.0613 1.0612 1.0611 1.061  1.0608 1.0606
+ 1.0603 1.06   1.0597 1.0594 1.0591 1.0588 1.0584 1.058  1.0576 1.0572
+ 1.0567 1.0562 1.0556 1.055  1.0545 1.0541 1.0536 1.0532 1.0528 1.0525
+ 1.0521 1.0518 1.0515 1.0512 1.051  1.0508 1.0505 1.0503 1.05   1.0498
+ 1.0497 1.0495 1.0494 1.0493 1.0492 1.0492 1.0492 1.0492 1.0492 1.0492
+ 1.0493 1.0493 1.0494 1.0495 1.0497 1.0498 1.05   1.0501 1.0502 1.0504
+ 1.0506 1.0508 1.0509 1.0512 1.0514 1.0516 1.0519 1.052  1.0521 1.0522
+ 1.0523 1.0523 1.0523 1.0523 1.0524 1.0524 1.0524 1.0524 1.0523 1.0521
+ 1.052  1.0518 1.0516 1.0514 1.0512 1.051  1.0507 1.0506 1.0507 1.0509
+ 1.051  1.0512 1.0515 1.0518 1.0523 1.0527 1.0531 1.0534 1.0535 1.0534
+ 1.0533 1.0532 1.0531 1.0531 1.0531 1.0532 1.0532 1.0534 1.0535 1.0535
+ 1.0536 1.0537 1.0538 1.0541 1.0542 1.0543 1.0544 1.0546 1.0548 1.055
+ 1.0551 1.0553 1.0555 1.0556 1.0558 1.0559 1.0561 1.0563 1.0565 1.0566
+ 1.0567 1.0569 1.057  1.0571 1.0572 1.0574 1.0575 1.0576 1.0577 1.0577
+ 1.0577 1.0578 1.0577 1.0577 1.0577 1.0576 1.0576 1.0576 1.0576 1.0576
+ 1.0576 1.0575 1.0575 1.0575 1.0575 1.0575 1.0575 1.0575 1.0575 1.0576
+ 1.0576 1.0577 1.0577 1.0578 1.0578 1.0579 1.058  1.0581 1.0581 1.0581
+ 1.0581 1.0581 1.058  1.0579 1.0577 1.0575 1.0572 1.0569 1.0564 1.0559
+ 1.0554 1.0549 1.0543 1.0536 1.0528 1.0519 1.0509 1.0499 1.0488 1.0478
+ 1.0467 1.0456 1.0445 1.0433 1.0422 1.0411 1.0402 1.0392 1.0382 1.0372]
+Channel 1 : [0.98543 0.9853  0.98517 0.98512 0.98511 0.98518 0.98536 0.98556 0.98578
+ 0.98603 0.98629 0.98661 0.98693 0.98725 0.98755 0.98789 0.98829 0.98875
+ 0.98928 0.98983 0.99043 0.99112 0.99182 0.99245 0.99303 0.99358 0.99411
+ 0.99458 0.99503 0.99543 0.99583 0.99622 0.99659 0.99686 0.99708 0.99736
+ 0.9977  0.99804 0.99834 0.99861 0.99885 0.99906 0.9993  0.9995  0.99967
+ 0.99986 1.      1.0003  1.0004  1.0007  1.0009  1.001   1.0011  1.0011
+ 1.0012  1.0013  1.0014  1.0015  1.0016  1.0016  1.0016  1.0017  1.0017
+ 1.0017  1.0016  1.0016  1.0015  1.0014  1.0014  1.0013  1.0013  1.0013
+ 1.0012  1.0012  1.0012  1.0011  1.0011  1.0011  1.0012  1.0013  1.0014
+ 1.0016  1.0017  1.002   1.0022  1.0024  1.0026  1.0027  1.0027  1.0026
+ 1.0025  1.0023  1.002   1.0016  1.0012  1.0008  1.0004  1.0001  0.99998
+ 0.99998 1.      1.      0.99997 0.99989 0.99977 0.99963 0.99944 0.99918
+ 0.99893 0.99882 0.99865 0.99838 0.99824 0.99795 0.99779 0.99771 0.99755
+ 0.99737 0.99719 0.997   0.99682 0.99665 0.99649 0.99635 0.99615 0.99608
+ 0.99592 0.9958  0.99569 0.99558 0.99547 0.99535 0.99522 0.99506 0.99488
+ 0.9947  0.99452 0.99435 0.9942  0.99409 0.99398 0.99391 0.99386 0.99379
+ 0.99373 0.99368 0.99362 0.99356 0.99349 0.99342 0.99334 0.99307 0.99303
+ 0.99301 0.99299 0.99292 0.99285 0.99277 0.99269 0.99261 0.99253 0.99245
+ 0.99241 0.99238 0.99232 0.99227 0.9922  0.99218 0.99224 0.99233 0.9925
+ 0.99256 0.99281 0.99313 0.99356 0.99416 0.99493 0.99584 0.9968  0.99782
+ 0.99886 0.99994 1.0011  1.0024  1.0038  1.0053  1.0069  1.0085  1.01
+ 1.0114  1.0129  1.0144  1.0158  1.0172  1.0184  1.0196  1.0206  1.0216
+ 1.0226  1.0236 ]
+Channel 2 : [0.99366 0.9936  0.99356 0.99351 0.99348 0.99342 0.99333 0.99327 0.9932
+ 0.99313 0.99309 0.99302 0.99295 0.99289 0.99282 0.99275 0.99269 0.99263
+ 0.99257 0.9925  0.99244 0.99237 0.99231 0.99224 0.99217 0.9921  0.99204
+ 0.99197 0.99191 0.99186 0.99181 0.99176 0.99171 0.99169 0.99169 0.99167
+ 0.99163 0.99159 0.99156 0.99154 0.99153 0.99153 0.99152 0.99152 0.99152
+ 0.99152 0.9916  0.99171 0.99182 0.99193 0.99205 0.99217 0.99231 0.99244
+ 0.99255 0.99265 0.99274 0.99283 0.99292 0.99301 0.9931  0.9932  0.99329
+ 0.99342 0.99354 0.99366 0.99374 0.99375 0.99376 0.99376 0.99376 0.99376
+ 0.99377 0.99377 0.99377 0.99377 0.99377 0.99377 0.99377 0.99377 0.99377
+ 0.99377 0.99377 0.99377 0.99377 0.99377 0.99374 0.99372 0.9937  0.99367
+ 0.99364 0.99361 0.99357 0.99353 0.99349 0.99345 0.99341 0.99337 0.99334
+ 0.99332 0.99332 0.99332 0.99332 0.99332 0.99332 0.99333 0.99337 0.99341
+ 0.99345 0.99349 0.99354 0.99359 0.99365 0.9937  0.99375 0.9938  0.99385
+ 0.9939  0.99395 0.994   0.99405 0.9941  0.99415 0.99418 0.99422 0.99424
+ 0.99429 0.99432 0.99433 0.99433 0.99433 0.99433 0.99433 0.99433 0.99433
+ 0.99433 0.99433 0.99433 0.99431 0.99427 0.99426 0.99423 0.99421 0.99418
+ 0.99415 0.99414 0.99421 0.99428 0.99436 0.99445 0.99455 0.99489 0.99494
+ 0.99497 0.99501 0.99512 0.99524 0.99537 0.99551 0.99565 0.99581 0.99597
+ 0.99613 0.99631 0.99651 0.99672 0.99692 0.99711 0.9973  0.99748 0.99766
+ 0.99782 0.99798 0.99813 0.99827 0.9984  0.99852 0.99864 0.99882 0.99904
+ 0.9993  0.99956 0.99982 1.0001  1.0003  1.0004  1.0005  1.0006  1.0007
+ 1.0008  1.0008  1.0009  1.0009  1.0009  1.0009  1.0009  1.001   1.001
+ 1.0011  1.0011 ]
+Channel 3 : [0.97667 0.97673 0.9768  0.97688 0.97693 0.97702 0.97716 0.97726 0.97736
+ 0.97746 0.97751 0.97761 0.9777  0.97779 0.97787 0.97795 0.97803 0.9781
+ 0.97818 0.97826 0.97834 0.97842 0.97852 0.97864 0.97877 0.9789  0.97903
+ 0.97916 0.9793  0.97943 0.97956 0.97969 0.97984 0.97994 0.98001 0.98004
+ 0.98009 0.98013 0.98015 0.98016 0.98015 0.98014 0.98013 0.98012 0.9801
+ 0.98005 0.98001 0.97996 0.97992 0.97987 0.97982 0.97976 0.97972 0.97967
+ 0.97958 0.97948 0.97941 0.97939 0.97937 0.97933 0.97929 0.97923 0.97919
+ 0.97913 0.97912 0.97911 0.97911 0.97911 0.97911 0.97911 0.97911 0.97911
+ 0.97911 0.97911 0.97911 0.97911 0.97911 0.97911 0.97911 0.97911 0.97911
+ 0.97911 0.97912 0.97913 0.97913 0.97915 0.97919 0.97923 0.97928 0.97932
+ 0.97938 0.97943 0.97949 0.97956 0.97962 0.97968 0.97974 0.9798  0.97985
+ 0.97988 0.97988 0.97988 0.97988 0.97988 0.97988 0.97986 0.97982 0.97977
+ 0.97971 0.97962 0.97952 0.97941 0.97931 0.97921 0.9791  0.979   0.9789
+ 0.9788  0.9787  0.9786  0.9785  0.9784  0.9783  0.97822 0.97817 0.97815
+ 0.97809 0.97805 0.97805 0.97805 0.97805 0.97805 0.97805 0.97807 0.97811
+ 0.97816 0.97821 0.97827 0.97836 0.97847 0.97856 0.97867 0.97879 0.97891
+ 0.97904 0.97917 0.9793  0.97943 0.97956 0.97969 0.97982 0.9802  0.98025
+ 0.98028 0.98032 0.98042 0.98049 0.98056 0.98063 0.98071 0.98078 0.98084
+ 0.9809  0.98095 0.98102 0.98107 0.98112 0.98116 0.98119 0.98122 0.98122
+ 0.98084 0.98086 0.98089 0.98092 0.98093 0.98093 0.98093 0.98093 0.98093
+ 0.98099 0.98105 0.9811  0.98118 0.98127 0.98132 0.98137 0.98144 0.98148
+ 0.98151 0.98152 0.98153 0.98155 0.98155 0.98156 0.98156 0.98158 0.98159
+ 0.98161 0.98162]
+Channel 4 : [1.0778 1.0778 1.0778 1.0778 1.0778 1.0778 1.0778 1.0777 1.0777 1.0777
+ 1.0777 1.0777 1.0777 1.0777 1.0777 1.0777 1.0777 1.0776 1.0776 1.0776
+ 1.0776 1.0776 1.0776 1.0776 1.0776 1.0776 1.0775 1.0775 1.0775 1.0775
+ 1.0775 1.0775 1.0775 1.0775 1.0775 1.0775 1.0774 1.0774 1.0774 1.0774
+ 1.0774 1.0774 1.0774 1.0774 1.0774 1.0774 1.0773 1.0773 1.0772 1.0771
+ 1.077  1.0769 1.0769 1.0768 1.0767 1.0766 1.0765 1.0764 1.0763 1.0762
+ 1.0761 1.076  1.0759 1.0758 1.0757 1.0757 1.0756 1.0756 1.0756 1.0756
+ 1.0756 1.0757 1.0757 1.0757 1.0757 1.0757 1.0757 1.0757 1.0757 1.0757
+ 1.0757 1.0757 1.0757 1.0757 1.0757 1.0757 1.0757 1.0757 1.0757 1.0757
+ 1.0757 1.0757 1.0757 1.0756 1.0756 1.0756 1.0756 1.0756 1.0756 1.0756
+ 1.0756 1.0756 1.0756 1.0756 1.0756 1.0756 1.0756 1.0756 1.0756 1.0756
+ 1.0756 1.0756 1.0757 1.0757 1.0757 1.0757 1.0758 1.0758 1.0758 1.0758
+ 1.0758 1.0759 1.0759 1.0759 1.0759 1.076  1.0762 1.0763 1.0763 1.0763
+ 1.0763 1.0763 1.0763 1.0763 1.0763 1.0763 1.0763 1.0763 1.0763 1.0763
+ 1.0763 1.0763 1.0763 1.0763 1.0763 1.0763 1.0761 1.076  1.0758 1.0756
+ 1.0753 1.0746 1.0745 1.0744 1.0743 1.0741 1.0738 1.0734 1.0731 1.0728
+ 1.0724 1.072  1.0716 1.0713 1.0709 1.0705 1.0702 1.0698 1.0694 1.0691
+ 1.0688 1.0685 1.0682 1.0679 1.0676 1.0674 1.0672 1.0669 1.0667 1.0665
+ 1.0663 1.0662 1.066  1.0658 1.0658 1.066  1.0662 1.0665 1.0667 1.0669
+ 1.0671 1.0673 1.0674 1.0674 1.0675 1.0675 1.0675 1.0675 1.0675 1.0675]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="menampilkan-visualisasi-contoh-data">
+<h2><strong>Menampilkan visualisasi contoh data</strong><a class="headerlink" href="#menampilkan-visualisasi-contoh-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pilih index sampel</span>
+<span class="n">sample_idx</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">sample_data</span> <span class="o">=</span> <span class="n">X_total</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">sample_idx</span><span class="p">]</span>  <span class="c1"># semua 30 channel</span>
+<span class="n">sample_label</span> <span class="o">=</span> <span class="n">y_total</span><span class="p">[</span><span class="n">sample_idx</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># Loop untuk tiap channel</span>
+<span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">ch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># grid 6x5 untuk 30 channel</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Channel </span><span class="si">{</span><span class="n">ch</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;30 Channel dari Sample </span><span class="si">{</span><span class="n">sample_idx</span><span class="si">}</span><span class="s2"> (Label = </span><span class="si">{</span><span class="n">sample_label</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2c32325b14045d6a4507a787caab3bb3f3120e8a74b533f1aa880feadd2f6800.png" src="_images/2c32325b14045d6a4507a787caab3bb3f3120e8a74b533f1aa880feadd2f6800.png" />
+</div>
+</div>
+</section>
+<section id="mengecek-missing-value">
+<h2><strong>Mengecek Missing Value</strong><a class="headerlink" href="#mengecek-missing-value" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Total sampel</span>
+<span class="n">total_samples</span> <span class="o">=</span> <span class="n">X_total</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Cek missing value pada label</span>
+<span class="n">missing_labels</span> <span class="o">=</span> <span class="n">y_total</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cek missing value pada label:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah missing value di label: </span><span class="si">{</span><span class="n">missing_labels</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Cek missing value per sampel</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">has_nan_in_row</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ts</span><span class="p">))):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+<span class="n">missing_per_sample</span> <span class="o">=</span> <span class="n">X_total</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">has_nan_in_row</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">num_missing_samples</span> <span class="o">=</span> <span class="n">missing_per_sample</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Cek missing value per sampel:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah sampel yang mengandung missing value: </span><span class="si">{</span><span class="n">num_missing_samples</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">num_missing_samples</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tidak ada missing value di dataset dengan jumlah total sampel </span><span class="si">{</span><span class="n">total_samples</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ada missing value di dataset.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cek missing value pada label:
+Jumlah missing value di label: 0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cek missing value per sampel:
+Jumlah sampel yang mengandung missing value: 0
+Tidak ada missing value di dataset dengan jumlah total sampel 1323.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualisasi-jumlah-dan-sebaran-target">
+<h2><strong>Visualisasi Jumlah dan Sebaran Target</strong><a class="headerlink" href="#visualisasi-jumlah-dan-sebaran-target" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mapping label</span>
+<span class="n">label_mapping</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;Sehat&quot;</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Nyeri tingkat rendah&quot;</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Nyeri tingkat tinggi&quot;</span>
+<span class="p">}</span>
+
+<span class="n">palette</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;#4CAF50&quot;</span><span class="p">,</span>   <span class="c1"># hijau</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;#FFC107&quot;</span><span class="p">,</span>   <span class="c1"># kuning</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;#F44336&quot;</span>    <span class="c1"># merah</span>
+<span class="p">}</span>
+
+<span class="c1"># Pastikan y_total bertipe int</span>
+<span class="n">y_plot</span> <span class="o">=</span> <span class="n">y_total</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># 1️⃣ Visualisasi distribusi kelas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">y_plot</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="n">y_plot</span><span class="p">,</span>
+    <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribusi Kelas Nyeri pada Dataset EMOPain (Sebelum Split)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Label Kelas&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Jumlah Sampel&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set posisi tick dan label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span>
+    <span class="sa">f</span><span class="s2">&quot;0 - </span><span class="si">{</span><span class="n">label_mapping</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s2">&quot;1 - </span><span class="si">{</span><span class="n">label_mapping</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s2">&quot;2 - </span><span class="si">{</span><span class="n">label_mapping</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">])</span>
+
+<span class="c1"># Tambahkan jumlah sampel di atas bar</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span>
+        <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+        <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span>
+        <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span>
+    <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Tampilkan tabel jumlah data per kelas</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Rincian Jumlah Data per Kelas:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_total</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/922347b8f1f637e419aa8f294239c6e9cc2460c5fc6a9da53f65869b9a112349.png" src="_images/922347b8f1f637e419aa8f294239c6e9cc2460c5fc6a9da53f65869b9a112349.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rincian Jumlah Data per Kelas:
+0    1022
+1     189
+2     112
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="menampilkan-grafik-setiap-kelas">
+<h2><strong>Menampilkan grafik setiap kelas</strong><a class="headerlink" href="#menampilkan-grafik-setiap-kelas" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Label kelas</span>
+<span class="n">class_names</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;Sehat&#39;</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;Nyeri tingkat rendah&#39;</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;Nyeri tingkat tinggi&#39;</span>
+<span class="p">}</span>
+
+<span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_names</span><span class="p">)</span>
+
+<span class="c1"># Buat figure dengan subplots (satu per kelas)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">num_classes</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">class_id</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">class_names</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="c1"># Ambil index sampel pertama untuk kelas ini</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_total</span> <span class="o">==</span> <span class="n">class_id</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">series_data</span> <span class="o">=</span> <span class="n">X_total</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># channel 0</span>
+
+    <span class="c1"># Plot</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">series_data</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1f77b4&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kelas </span><span class="si">{</span><span class="n">class_id</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">class_names</span><span class="p">[</span><span class="n">class_id</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitudo&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Waktu (titik data)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5322755622bbcb7ca7e9fa9858e8bfc1ee691f7b987f3fd14cda1405b62710de.png" src="_images/5322755622bbcb7ca7e9fa9858e8bfc1ee691f7b987f3fd14cda1405b62710de.png" />
+</div>
+</div>
+</section>
+<section id="cek-duplikasi">
+<h2><strong>Cek Duplikasi</strong><a class="headerlink" href="#cek-duplikasi" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Total sampel</span>
+<span class="n">total_samples</span> <span class="o">=</span> <span class="n">X_total</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Ubah array menjadi tuple agar bisa dicek duplicate (tanpa applymap)</span>
+<span class="n">X_tuple</span> <span class="o">=</span> <span class="n">X_total</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">col</span><span class="p">:</span> <span class="n">col</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">tuple</span><span class="p">))</span>  <span class="c1"># gunakan map per kolom</span>
+
+<span class="c1"># Duplicate berdasarkan fitur (channel) saja</span>
+<span class="n">duplicate_features</span> <span class="o">=</span> <span class="n">X_tuple</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">num_duplicate_features</span> <span class="o">=</span> <span class="n">duplicate_features</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Duplicate berdasarkan fitur (channel)r + label</span>
+<span class="n">combined</span> <span class="o">=</span> <span class="n">X_tuple</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">combined</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_total</span><span class="o">.</span><span class="n">values</span>
+<span class="n">duplicate_combined</span> <span class="o">=</span> <span class="n">combined</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">num_duplicate_combined</span> <span class="o">=</span> <span class="n">duplicate_combined</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Tampilkan hasil</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Pengecekan Duplikat Dataset EMOPain ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah total sampel         : </span><span class="si">{</span><span class="n">total_samples</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah sampel duplikat fitur saja     : </span><span class="si">{</span><span class="n">num_duplicate_features</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah sampel duplikat fitur + label : </span><span class="si">{</span><span class="n">num_duplicate_combined</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">num_duplicate_combined</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">duplicate_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">duplicate_combined</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Index sampel duplikat (fitur + label) : </span><span class="si">{</span><span class="n">duplicate_indices</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tidak ada sampel duplikat di dataset.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Pengecekan Duplikat Dataset EMOPain ===
+Jumlah total sampel         : 1323
+Jumlah sampel duplikat fitur saja     : 0
+Jumlah sampel duplikat fitur + label : 0
+Tidak ada sampel duplikat di dataset.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="tahap-preprocessing">
+<h1><strong>3. Tahap Preprocessing</strong><a class="headerlink" href="#tahap-preprocessing" title="Link to this heading">#</a></h1>
+<section id="pembagian-dataset-untuk-training-testing-dan-manual-testing">
+<h2><strong>Pembagian Dataset untuk Training, Testing, dan Manual Testing</strong><a class="headerlink" href="#pembagian-dataset-untuk-training-testing-dan-manual-testing" title="Link to this heading">#</a></h2>
+<div align="justify">Proses pembagian dataset EMOPain dilakukan dalam dua tahap untuk memastikan dataset siap digunakan baik untuk pelatihan model maupun uji coba manual pada aplikasi. Pada tahap pertama, sekitar 20% dari seluruh sampel dipisahkan dan disimpan secara terpisah sebagai data manual testing. Data ini tidak akan disentuh selama pelatihan model, tetapi disiapkan khusus untuk pengujian aplikasi.Sisanya, sekitar 80% dari dataset, digunakan untuk modeling, dan kemudian pada tahap kedua dibagi lagi menjadi data latih (train) sebesar 80% dan data uji (test) sebesar 20%.Dengan cara ini, dataset terbagi menjadi tiga bagian: data latih untuk training model, data uji untuk evaluasi model, dan data manual testing untuk uji coba aplikasi secara independen.<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MEMULAI PROSES PEMBAGIAN DATA (STRATIFIED)...&quot;</span><span class="p">)</span>
+
+<span class="c1"># TAHAP 1: MEMISAHKAN DATA MANUAL (HOLDOUT)</span>
+<span class="n">X_sisa</span><span class="p">,</span> <span class="n">X_manual</span><span class="p">,</span> <span class="n">y_sisa</span><span class="p">,</span> <span class="n">y_manual</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X_total</span><span class="p">,</span> <span class="n">y_total</span><span class="p">,</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span>      <span class="c1"># 10% untuk manual testing</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">y_total</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[TAHAP 1 MEMISAHKAN DATA MANUAL]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   - Data Disimpan untuk Manual : </span><span class="si">{</span><span class="n">X_manual</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> Data&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   - Data Sisa untuk Modeling   : </span><span class="si">{</span><span class="n">X_sisa</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> Data&quot;</span><span class="p">)</span>
+
+<span class="c1"># Simpan data manual ke CSV</span>
+<span class="n">X_manual_flat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="sa">f</span><span class="s2">&quot;channel_</span><span class="si">{</span><span class="n">ch</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">X_manual</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">ts</span><span class="p">:</span> <span class="n">ts</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">X_manual</span><span class="o">.</span><span class="n">columns</span>
+<span class="p">})</span>
+<span class="n">X_manual_flat</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_manual</span><span class="o">.</span><span class="n">values</span>
+<span class="n">X_manual_flat</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;manual_testing_data.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data manual testing tersimpan di file &#39;manual_testing_data.csv&#39;&quot;</span><span class="p">)</span>
+
+<span class="c1"># TAHAP 2: MEMBAGI DATA MODEL (TRAIN 80% : TEST 20%)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X_sisa</span><span class="p">,</span> <span class="n">y_sisa</span><span class="p">,</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span>      <span class="c1"># 20% untuk test model</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">y_sisa</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[TAHAP 2 MEMBAGI DATA MODEL]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   - Data Latih (TRAIN) : </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> Data&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   - Data Uji (TEST)    : </span><span class="si">{</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> Data&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MEMULAI PROSES PEMBAGIAN DATA (STRATIFIED)...
+
+[TAHAP 1 MEMISAHKAN DATA MANUAL]
+   - Data Disimpan untuk Manual : 133 Data
+   - Data Sisa untuk Modeling   : 1190 Data
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data manual testing tersimpan di file &#39;manual_testing_data.csv&#39;
+
+[TAHAP 2 MEMBAGI DATA MODEL]
+   - Data Latih (TRAIN) : 952 Data
+   - Data Uji (TEST)    : 238 Data
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualisasi-jumlah-dan-sebaran-target-di-data-train">
+<h2><strong>Visualisasi Jumlah dan Sebaran Target di data Train</strong><a class="headerlink" href="#visualisasi-jumlah-dan-sebaran-target-di-data-train" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mapping label (sesuaikan dengan dataset EMOPain)</span>
+<span class="n">label_mapping</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;Sehat&quot;</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Nyeri tingkat rendah&quot;</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Nyeri tingkat tinggi&quot;</span>
+<span class="p">}</span>
+
+<span class="n">palette</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;#4CAF50&quot;</span><span class="p">,</span>   <span class="c1"># hijau</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;#FFC107&quot;</span><span class="p">,</span>   <span class="c1"># kuning</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;#F44336&quot;</span>    <span class="c1"># merah</span>
+<span class="p">}</span>
+
+<span class="c1"># Pastikan y_train bertipe int</span>
+<span class="n">y_plot</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">y_plot</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="n">y_plot</span><span class="p">,</span>             <span class="c1"># hilangkan warning seaborn</span>
+    <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribusi Label Data Latih (Train)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Label Kelas&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Jumlah Sampel&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set label x-axis</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span>
+    <span class="sa">f</span><span class="s2">&quot;0 - </span><span class="si">{</span><span class="n">label_mapping</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s2">&quot;1 - </span><span class="si">{</span><span class="n">label_mapping</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s2">&quot;2 - </span><span class="si">{</span><span class="n">label_mapping</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">])</span>
+
+<span class="c1"># Tambahkan jumlah sampel di atas bar</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span>
+        <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+        <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span>
+        <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span>
+    <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Tampilkan tabel jumlah per kelas</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Rincian jumlah sampel per kelas di data train:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8a7422221a5d5f817f81f9a1e936e10f87e053ffa0d00285e3ff5722274d416d.png" src="_images/8a7422221a5d5f817f81f9a1e936e10f87e053ffa0d00285e3ff5722274d416d.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rincian jumlah sampel per kelas di data train:
+0    735
+1    136
+2     81
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="balancing-data-untuk-data-training">
+<h1><strong>Balancing Data untuk data Training</strong><a class="headerlink" href="#balancing-data-untuk-data-training" title="Link to this heading">#</a></h1>
+<div align="justify">Dataset EMOPain sangat tidak seimbang : kelas “Sehat” 735 sampel, “Nyeri rendah” 136, dan “Nyeri tinggi” 81. Ketidakseimbangan ini membuat model bias ke kelas mayoritas. Untuk mengatasinya, dilakukan balancing data agar tiap kelas memiliki jumlah seimbang. Metode SMOTE membuat sampel sintetis baru untuk kelas minoritas dengan interpolasi(membuat data baru di antara data yang sudah ada.), sehingga model bisa belajar semua kelas secara adil.<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Flatten data train agar bisa dipakai SMOTE</span>
+<span class="n">X_train_flat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">))])</span>
+<span class="n">y_train_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape sebelum SMOTE:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X_train_flat:&quot;</span><span class="p">,</span> <span class="n">X_train_flat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y_train:&quot;</span><span class="p">,</span> <span class="n">y_train_array</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># Terapkan SMOTE</span>
+<span class="n">smote</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X_train_res</span><span class="p">,</span> <span class="n">y_train_res</span> <span class="o">=</span> <span class="n">smote</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_train_flat</span><span class="p">,</span> <span class="n">y_train_array</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Shape setelah SMOTE:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X_train_res:&quot;</span><span class="p">,</span> <span class="n">X_train_res</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y_train_res:&quot;</span><span class="p">,</span> <span class="n">y_train_res</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># Cek distribusi label setelah SMOTE</span>
+<span class="n">unique</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_train_res</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Distribusi label setelah SMOTE:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">unique</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Label </span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2"> sampel&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape sebelum SMOTE:
+X_train_flat: (952, 6000)
+y_train: (952,)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape setelah SMOTE:
+X_train_res: (2205, 6000)
+y_train_res: (2205,)
+
+Distribusi label setelah SMOTE:
+Label 0: 735 sampel
+Label 1: 735 sampel
+Label 2: 735 sampel
+</pre></div>
+</div>
+</div>
+</div>
+<section id="visualisasi-data-training-setelah-proses-balancing-data">
+<h2><strong>Visualisasi Data Training setelah proses Balancing Data</strong><a class="headerlink" href="#visualisasi-data-training-setelah-proses-balancing-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Distribusi sebelum SMOTE</span>
+<span class="n">unique_before</span><span class="p">,</span> <span class="n">counts_before</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_before</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Label&#39;</span><span class="p">:</span> <span class="n">unique_before</span><span class="p">,</span>
+    <span class="s1">&#39;Jumlah&#39;</span><span class="p">:</span> <span class="n">counts_before</span><span class="p">,</span>
+    <span class="s1">&#39;Status&#39;</span><span class="p">:</span> <span class="s1">&#39;Sebelum SMOTE&#39;</span>
+<span class="p">})</span>
+
+<span class="c1"># Distribusi setelah SMOTE</span>
+<span class="n">unique_after</span><span class="p">,</span> <span class="n">counts_after</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_train_res</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_after</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Label&#39;</span><span class="p">:</span> <span class="n">unique_after</span><span class="p">,</span>
+    <span class="s1">&#39;Jumlah&#39;</span><span class="p">:</span> <span class="n">counts_after</span><span class="p">,</span>
+    <span class="s1">&#39;Status&#39;</span><span class="p">:</span> <span class="s1">&#39;Setelah SMOTE&#39;</span>
+<span class="p">})</span>
+
+<span class="c1"># Gabungkan</span>
+<span class="n">df_plot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_before</span><span class="p">,</span> <span class="n">df_after</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Mapping label untuk keterangan</span>
+<span class="n">label_mapping</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;Sehat&quot;</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Nyeri rendah&quot;</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Nyeri tinggi&quot;</span>
+<span class="p">}</span>
+<span class="n">df_plot</span><span class="p">[</span><span class="s1">&#39;Label_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_plot</span><span class="p">[</span><span class="s1">&#39;Label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">label_mapping</span><span class="p">)</span>
+
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">status</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="s1">&#39;Sebelum SMOTE&#39;</span><span class="p">,</span><span class="s1">&#39;Setelah SMOTE&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;#F44336&#39;</span><span class="p">,</span><span class="s1">&#39;#4CAF50&#39;</span><span class="p">]):</span>
+    <span class="n">subset</span> <span class="o">=</span> <span class="n">df_plot</span><span class="p">[</span><span class="n">df_plot</span><span class="p">[</span><span class="s1">&#39;Status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">status</span><span class="p">]</span>
+    <span class="n">bars</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">subset</span><span class="p">[</span><span class="s1">&#39;Label_name&#39;</span><span class="p">],</span> <span class="n">subset</span><span class="p">[</span><span class="s1">&#39;Jumlah&#39;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">status</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+    <span class="c1"># Tambahkan jumlah sampel di atas bar</span>
+    <span class="k">for</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">bars</span><span class="p">:</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">height</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                 <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Tambahkan nomor kelas di label x-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">label_mapping</span><span class="p">)),</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">label_mapping</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">label_mapping</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Perbandingan Distribusi Label Data Train Sebelum dan Setelah SMOTE&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Label Kelas&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Jumlah Sampel&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1649f9dd3aa8baee883b22a996326d0877ee125a84316c9283922e9f757fa377.png" src="_images/1649f9dd3aa8baee883b22a996326d0877ee125a84316c9283922e9f757fa377.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="modeling">
+<h1><strong>4. Modeling</strong><a class="headerlink" href="#modeling" title="Link to this heading">#</a></h1>
+<div align="justify">Random Forest saya pilih karena cocok digunakan untuk dataset EMOPain karena sifatnya yang mampu menangani data multichannel dan high-dimensional. Dataset EMOPain memiliki 30 channel dengan 200 titik per channel, sehingga setiap sampel memiliki 6000 fitur setelah di-flatten. RF efektif untuk banyak fitur tanpa memerlukan normalisasi atau asumsi distribusi tertentu, serta tahan terhadap outlier dan noise yang sering muncul pada sinyal biosensor. Proses modeling dimulai dengan flattening data train hasil SMOTE agar setiap kelas seimbang, sementara data test tetap asli untuk evaluasi performa nyata. Model RF kemudian dilatih menggunakan 200 pohon keputusan, di mana setiap pohon belajar dari subset sampel dan subset fitur, sehingga membentuk ensemble yang kuat dan mengurangi risiko overfitting.<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># RANDOM FOREST - TRAINING MODEL</span>
+<span class="c1"># Parameters</span>
+<span class="n">n_samples_train</span> <span class="o">=</span> <span class="n">X_train_res</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>   <span class="c1"># 2205 sampel</span>
+<span class="n">n_channels</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">ts_length</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="c1"># Flatten data train (hasil SMOTE)</span>
+<span class="n">X_train_flat_rf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_samples_train</span><span class="p">,</span> <span class="n">n_channels</span> <span class="o">*</span> <span class="n">ts_length</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples_train</span><span class="p">):</span>
+    <span class="n">X_train_flat_rf</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">X_train_res</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">ch</span><span class="o">*</span><span class="n">ts_length</span><span class="p">:(</span><span class="n">ch</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ts_length</span><span class="p">]</span>
+                                            <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">)])</span>
+
+<span class="n">y_train_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_train_res</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+
+<span class="c1"># Training Random Forest</span>
+<span class="n">rf_clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>  <span class="c1"># jumlah pohon</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training Random Forest dengan data train 2205 sampel...&quot;</span><span class="p">)</span>
+<span class="n">rf_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_flat_rf</span><span class="p">,</span> <span class="n">y_train_array</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Forest berhasil dilatih!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training Random Forest dengan data train 2205 sampel...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random Forest berhasil dilatih!
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="evaluasi">
+<h1><strong>5. Evaluasi</strong><a class="headerlink" href="#evaluasi" title="Link to this heading">#</a></h1>
+<div align="justify">Setelah training, model dievaluasi pada data test menggunakan metrik seperti akurasi, precision, recall, f1-score, dan confusion matrix untuk menilai performa prediksi per kelas, memastikan model dapat mengenali pola semua kelas dengan baik.<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># RANDOM FOREST - EVALUASI</span>
+
+<span class="c1"># Flatten data test</span>
+<span class="n">n_samples_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">X_test_flat_rf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_samples_test</span><span class="p">,</span> <span class="n">n_channels</span> <span class="o">*</span> <span class="n">ts_length</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples_test</span><span class="p">):</span>
+    <span class="n">X_test_flat_rf</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">X_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">ch</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+                                           <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">)])</span>
+
+<span class="n">y_test_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+
+<span class="c1"># Prediksi</span>
+<span class="n">y_pred_rf</span> <span class="o">=</span> <span class="n">rf_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_flat_rf</span><span class="p">)</span>
+
+<span class="c1"># Akurasi</span>
+<span class="n">acc_rf</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_array</span><span class="p">,</span> <span class="n">y_pred_rf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&gt;&gt;&gt; AKURASI RANDOM FOREST: </span><span class="si">{</span><span class="n">acc_rf</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% &lt;&lt;&lt;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Laporan klasifikasi</span>
+<span class="n">target_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0: Sehat&#39;</span><span class="p">,</span> <span class="s1">&#39;1: Nyeri rendah&#39;</span><span class="p">,</span> <span class="s1">&#39;2: Nyeri tinggi&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- CLASSIFICATION REPORT ---</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_array</span><span class="p">,</span> <span class="n">y_pred_rf</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">target_names</span><span class="p">))</span>
+
+<span class="c1"># Confusion Matrix</span>
+<span class="n">cm_rf</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test_array</span><span class="p">,</span> <span class="n">y_pred_rf</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">cm_rf</span><span class="p">,</span>
+    <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span>
+    <span class="n">xticklabels</span><span class="o">=</span><span class="n">target_names</span><span class="p">,</span>
+    <span class="n">yticklabels</span><span class="o">=</span><span class="n">target_names</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Actual&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix Random Forest - EMOPain&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; AKURASI RANDOM FOREST: 88.66% &lt;&lt;&lt;
+
+--- CLASSIFICATION REPORT ---
+
+                 precision    recall  f1-score   support
+
+       0: Sehat       0.95      0.94      0.94       184
+1: Nyeri rendah       0.71      0.79      0.75        34
+2: Nyeri tinggi       0.65      0.55      0.59        20
+
+       accuracy                           0.89       238
+      macro avg       0.77      0.76      0.76       238
+   weighted avg       0.89      0.89      0.89       238
+</pre></div>
+</div>
+<img alt="_images/632921faafe8371210f8c0a530e634912bd690dce9b7f2214bbd4ce3ca58bb76.png" src="_images/632921faafe8371210f8c0a530e634912bd690dce9b7f2214bbd4ce3ca58bb76.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="deployment">
+<h1><strong>6. Deployment</strong><a class="headerlink" href="#deployment" title="Link to this heading">#</a></h1>
+<div align="justify">Setelah model Random Forest tervalidasi dengan akurasi 88.66%, langkah terakhir adalah melakukan penyimpanan model dan simulasi penggunaan nyata. Pada tahap ini, kita akan menggunakan Data Manual (133 sampel) yang telah dipisahkan sejak awal, sebelum proses training. Data ini bersifat unseen, artinya model tidak pernah melihatnya selama training maupun evaluasi, sehingga dapat berfungsi sebagai pengujian black-box yang paling valid. Dengan menggunakan Data Manual, kita bisa menilai performa model di kondisi dunia nyata dan memastikan prediksi yang dihasilkan dapat diandalkan sebelum implementasi ke aplikasi seperti Streamlit.<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+
+<span class="c1"># Simpan model ke file</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">rf_clf</span><span class="p">,</span> <span class="s2">&quot;rf_clf.pkl&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model Random Forest berhasil disimpan sebagai rf_clf.pkl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Random Forest berhasil disimpan sebagai rf_clf.pkl
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Peramalan_waktu.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Time Series dataset for prediction</strong></p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Time-Series Classification untuk Prediksi Tingkat Nyeri (EMOPain Dataset)</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#business-understanding"><strong>1. Business Understanding</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latar-belakang"><strong>1.1 Latar Belakang</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permasalahan-bisnis"><strong>1.2 Permasalahan Bisnis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan"><strong>1.3 Tujuan</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manfaat"><strong>1.4 Manfaat</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding"><strong>2. Data Understanding</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sumber-data"><strong>2.1 Sumber Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-dataset"><strong>2.2 Struktur Dataset</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-30-channel-sensor"><strong>2.3 Deskripsi 30 Channel Sensor</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#label-data"><strong>2.4 Label Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-dan-import-library"><strong>Install dan import Library</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data-dan-penggabungan-dataset"><strong>Load Data dan Penggabungan Dataset</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-dataset"><strong>Contoh dataset</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-visualisasi-contoh-data"><strong>Menampilkan visualisasi contoh data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengecek-missing-value"><strong>Mengecek Missing Value</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-jumlah-dan-sebaran-target"><strong>Visualisasi Jumlah dan Sebaran Target</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-grafik-setiap-kelas"><strong>Menampilkan grafik setiap kelas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cek-duplikasi"><strong>Cek Duplikasi</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-preprocessing"><strong>3. Tahap Preprocessing</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pembagian-dataset-untuk-training-testing-dan-manual-testing"><strong>Pembagian Dataset untuk Training, Testing, dan Manual Testing</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-jumlah-dan-sebaran-target-di-data-train"><strong>Visualisasi Jumlah dan Sebaran Target di data Train</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#balancing-data-untuk-data-training"><strong>Balancing Data untuk data Training</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data-training-setelah-proses-balancing-data"><strong>Visualisasi Data Training setelah proses Balancing Data</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling"><strong>4. Modeling</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi"><strong>5. Evaluasi</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment"><strong>6. Deployment</strong></a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
